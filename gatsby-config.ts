@@ -18,7 +18,8 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-postcss'
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-material-ui'
   ]
 }
 
