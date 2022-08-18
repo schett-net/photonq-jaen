@@ -16,10 +16,12 @@ const config: GatsbyConfig = {
         jaenProjectId: 3
       }
     },
+    '@chakra-ui/gatsby-plugin',
+
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-postcss',
-    'gatsby-plugin-material-ui'
+    'gatsby-theme-material-ui'
   ]
 }
 

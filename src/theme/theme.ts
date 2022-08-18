@@ -1,10 +1,13 @@
+import {extendTheme} from '@chakra-ui/react'
+import {deepmerge} from '@material-ui/utils'
 import {createTheme} from '@mui/material'
+
 import {red} from '@mui/material/colors'
 
 import colors from './theme.config'
 
 // Create a theme instance.
-const theme = createTheme({
+export const muiTheme = createTheme({
   palette: {
     primary: {
       main: colors.primary,
@@ -23,4 +26,9 @@ const theme = createTheme({
   }
 })
 
-export default theme
+export const chakraTheme = extendTheme()
+
+// Merge the theme instances.
+// Ref: https://github.com/mui/material-ui/issues/25852#issuecomment-831213670
+console.log(deepmerge(muiTheme, chakraTheme))
+export default deepmerge(muiTheme, chakraTheme)
