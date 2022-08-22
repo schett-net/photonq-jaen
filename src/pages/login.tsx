@@ -4,6 +4,7 @@ import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
 import AuthContent from '../components/Authentification/AuthContent'
+import LoginForm from '../components/Authentification/LoginForm'
 import NavbarPadding from '../components/Layout/NavbarPadding'
 import PageLayout from '../components/Layout/PageLayout'
 
@@ -17,7 +18,7 @@ export function LoginPage(props: PageProps) {
         <Grid item md={7}>
           <div
             className={'pt-8 md:pt-0 md:h-screen flex flex-col justify-center'}>
-            {/* <LoginForm /> */}
+            <LoginForm />
           </div>
         </Grid>
         <Grid item md={5}>

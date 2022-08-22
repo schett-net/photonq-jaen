@@ -1,8 +1,9 @@
-import { connectPage } from '@jaenjs/jaen'
-import { Grid } from '@mui/material'
-import { graphql, PageProps } from 'gatsby'
+import {connectPage} from '@jaenjs/jaen'
+import {Grid} from '@mui/material'
+import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 import AuthContent from '../components/Authentification/AuthContent'
+import RegisterForm from '../components/Authentification/RegisterForm'
 import AuthPageLayout from '../components/Layout/AuthPageLayout'
 import NavbarPadding from '../components/Layout/NavbarPadding'
 import PageLayout from '../components/Layout/PageLayout'
@@ -20,7 +21,7 @@ export function RegisterPage(props: PageProps) {
               className={
                 'pt-8 md:pt-0 md:h-screen flex flex-col justify-center'
               }>
-              {/* <RegisterForm /> */}
+              <RegisterForm />
             </div>
           </Grid>
           <Grid item md={5}>

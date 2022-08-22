@@ -39,7 +39,7 @@ export function useSelectedExperiment(id: string | 'new') {
   }
 
   useEffect(() => {
-    if (id) {
+    if (id && user) {
       if (id !== 'new') {
         getData()
       } else {
