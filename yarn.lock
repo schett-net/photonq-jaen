@@ -2614,10 +2614,10 @@
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
-"@jaenjs/jaen@^3.0.0-beta.70":
-  version "3.0.0-beta.70"
-  resolved "https://registry.yarnpkg.com/@jaenjs/jaen/-/jaen-3.0.0-beta.70.tgz#234fac40d7c08d6e18a9a3ca1695891f4c1dee40"
-  integrity sha512-IrE8xwYLe654cOMqcdD4QfwVYayKcrGT7+5LyJEJrDu0y6OnIQIcdG/CNVwvGhx1b6xzDY1p7T1+1zcEdD//Yg==
+"@jaenjs/jaen@^3.0.0-beta.71":
+  version "3.0.0-beta.71"
+  resolved "https://registry.yarnpkg.com/@jaenjs/jaen/-/jaen-3.0.0-beta.71.tgz#c9c20ed1876bb886d2f7a331d07c00e30151bddc"
+  integrity sha512-qT7SSJU/WcgyUZvYn1LzVyR2RvhcKPJXcZ/gB5tAUeAdI6QD5maKbQ21SQfWaHWyFhu0PcXSasVJxF+gPPnTjQ==
   dependencies:
     "@atlaskit/tree" "^8.4.0"
     "@chakra-ui/react" "^1.7.4"
