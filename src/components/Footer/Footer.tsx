@@ -1,6 +1,6 @@
+import {navigate} from '@jaenjs/jaen'
 import {Link} from '@mui/material'
 import clsx from 'clsx'
-import {navigate} from 'gatsby'
 import React from 'react'
 import MaxWidthContainer from '../Layout/MaxWidthContainer'
 

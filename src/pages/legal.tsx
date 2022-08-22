@@ -1,4 +1,4 @@
-import { connectPage } from '@jaenjs/jaen'
+import {connectPage} from '@jaenjs/jaen'
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
@@ -8,7 +8,7 @@ import PageLayout from '../components/Layout/PageLayout'
 import Section from '../components/Section/Section'
 import SectionText from '../components/Section/SectionText'
 
-const LegalPage = (props: PageProps) => {
+export const LegalPage = (props: PageProps) => {
   return (
     <PageLayout pathname={props.path}>
       <div className="relative flex flex-col items-center">

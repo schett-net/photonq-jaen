@@ -1,6 +1,5 @@
-import {Field} from '@jaenjs/jaen'
+import {Field, navigate} from '@jaenjs/jaen'
 import {Button} from '@mui/material'
-import {navigate} from 'gatsby'
 import React from 'react'
 
 export default function PrimaryCTA() {

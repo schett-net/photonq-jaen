@@ -12,7 +12,7 @@ import SectionHeader from '../components/Section/SectionHeader'
 
 interface PageProps {}
 
-function HowToGuidesPage(props: PageProps) {
+export function HowToGuidesPage(props: PageProps) {
   const {
     currentCategory,
     setCurrentCategory,
@@ -87,5 +87,6 @@ export const query = graphql`
 `
 
 export default connectPage(HowToGuidesPage, {
-  displayName: 'HowToGuidesPage'
+  displayName: 'HowToGuidesPage',
+  children: ['HowToGuide'],
 })

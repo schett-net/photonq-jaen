@@ -1,5 +1,5 @@
+import { navigate } from '@jaenjs/jaen'
 import clsx from 'clsx'
-import {navigate} from 'gatsby'
 import Cookies from 'js-cookie'
 import React from 'react'
 

@@ -7,7 +7,7 @@ import AuthContent from '../components/Authentification/AuthContent'
 import NavbarPadding from '../components/Layout/NavbarPadding'
 import PageLayout from '../components/Layout/PageLayout'
 
-function LoginPage(props: PageProps) {
+export function LoginPage(props: PageProps) {
   return (
     <PageLayout pathname={props.path}>
       <div className={'2xl:hidden'}>

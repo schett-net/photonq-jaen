@@ -8,7 +8,7 @@ import PageLayout from '../components/Layout/PageLayout'
 import Section from '../components/Section/Section'
 import SectionText from '../components/Section/SectionText'
 
-const ImpressumPage = (props: PageProps) => {
+export const ImpressumPage = (props: PageProps) => {
   return (
     <PageLayout pathname={props.path}>
       <div className="relative flex flex-col items-center">
