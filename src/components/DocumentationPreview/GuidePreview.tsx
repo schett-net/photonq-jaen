@@ -1,5 +1,4 @@
-import {connectSection, Field, useField} from '@jaenjs/jaen'
-import {navigate} from 'gatsby'
+import {connectSection, Field, navigate, useField} from '@jaenjs/jaen'
 import React from 'react'
 
 function GuidePreview(props: {index: string; slug: string}) {

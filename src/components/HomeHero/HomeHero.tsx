@@ -1,9 +1,7 @@
-import {Field} from '@jaenjs/jaen'
+import {Field, navigate} from '@jaenjs/jaen'
 import {Button} from '@mui/material'
 import React from 'react'
 import SectionHeader from '../Section/SectionHeader'
-
-import {navigate} from 'gatsby'
 
 import NavbarPadding from '../Layout/NavbarPadding'
 import {BgFade} from './style'

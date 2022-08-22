@@ -1,6 +1,6 @@
 import {connectPage, Field} from '@jaenjs/jaen'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import {graphql, PageProps} from 'gatsby'
+import {PageProps} from 'gatsby'
 import * as React from 'react'
 
 import DocumentationPreview from '../components/DocumentationPreview/DocumentationPreview'
@@ -15,7 +15,7 @@ import SectionFade from '../components/Section/SectionFade'
 import SectionLogos from '../components/Section/SectionLogos'
 
 // markup
-const IndexPage = (props: PageProps) => {
+export const IndexPage = (props: PageProps) => {
   return (
     <PageLayout pathname={props.path}>
       <div className={'w-full flex flex-col items-center'}>
@@ -78,11 +78,5 @@ const IndexPage = (props: PageProps) => {
     </PageLayout>
   )
 }
-
-export const query = graphql`
-  query ($jaenPageId: String!) {
-    ...JaenPageQuery
-  }
-`
 
 export default connectPage(IndexPage, {displayName: 'IndexPage'})

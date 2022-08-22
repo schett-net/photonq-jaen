@@ -1,13 +1,13 @@
-import {connectPage} from '@jaenjs/jaen'
-import {Grid} from '@mui/material'
-import {graphql, PageProps} from 'gatsby'
+import { connectPage } from '@jaenjs/jaen'
+import { Grid } from '@mui/material'
+import { graphql, PageProps } from 'gatsby'
 import React from 'react'
 import AuthContent from '../components/Authentification/AuthContent'
 import AuthPageLayout from '../components/Layout/AuthPageLayout'
 import NavbarPadding from '../components/Layout/NavbarPadding'
 import PageLayout from '../components/Layout/PageLayout'
 
-function RegisterPage(props: PageProps) {
+export function RegisterPage(props: PageProps) {
   return (
     <PageLayout pathname={props.path}>
       <AuthPageLayout>

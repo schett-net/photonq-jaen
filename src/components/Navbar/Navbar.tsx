@@ -1,5 +1,5 @@
+import { navigate } from '@jaenjs/jaen'
 import clsx from 'clsx'
-import { navigate } from 'gatsby'
 import React, { useMemo, useState } from 'react'
 import {
   getLoggedInNavbarRoutes,
