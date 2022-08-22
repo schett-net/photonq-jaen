@@ -1,6 +1,5 @@
 import {connectPage, Field} from '@jaenjs/jaen'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import {PageProps} from 'gatsby'
+import {graphql, PageProps} from 'gatsby'
 import * as React from 'react'
 
 import DocumentationPreview from '../components/DocumentationPreview/DocumentationPreview'
@@ -78,5 +77,11 @@ export const IndexPage = (props: PageProps) => {
     </PageLayout>
   )
 }
+
+export const query = graphql`
+  query ($jaenPageId: String!) {
+    ...JaenPageQuery
+  }
+`
 
 export default connectPage(IndexPage, {displayName: 'IndexPage'})

@@ -1,4 +1,3 @@
-import React, { useContext, useState } from "react";
 import {
   Paper,
   Table,
@@ -6,37 +5,36 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
-} from "@mui/material";
-import { getTableColumns } from "../../model/model.table";
-import { useTranslation } from "react-i18next";
-import { useExpanded, useSortBy, useTable } from "react-table";
-import { AddExperimentDialogProps } from "../../model/types/type.experiment";
-import { ProjectExperimentDataContext } from "../../providers/ProjectExperimentDataProvider";
-import { getPathWithId, Path } from "../../model/model.routes";
-import { useRouter } from "next/router";
-import ContextMenu from "./ContextMenu";
+  TableRow
+} from '@mui/material'
+import { navigate } from 'gatsby'
+import React, {useContext, useState} from 'react'
+import {useTranslation} from 'react-i18next'
+import {useExpanded, useSortBy, useTable} from 'react-table'
+import {getTableColumns} from '../../model/model.table'
+import {AddExperimentDialogProps} from '../../model/types/type.experiment'
+import {ProjectExperimentDataContext} from '../../providers/ProjectExperimentDataProvider'
+import ContextMenu from './ContextMenu'
 
 interface MainTableProps {
   setAddExperimentDialogProps: React.Dispatch<
     React.SetStateAction<AddExperimentDialogProps>
-  >;
+  >
 }
 
 export default function MainTable({
-  setAddExperimentDialogProps,
+  setAddExperimentDialogProps
 }: MainTableProps) {
   const {
-    experiments: { value: data, setValue: setData },
-  } = useContext(ProjectExperimentDataContext);
-  const { t } = useTranslation();
-  const [mainTableColumns] = useState(getTableColumns(t));
-  const router = useRouter();
-  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [actions, setActions] = useState<any>();
+    experiments: {value: data, setValue: setData}
+  } = useContext(ProjectExperimentDataContext)
+  const {t} = useTranslation()
+  const [mainTableColumns] = useState(getTableColumns(t))
+  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [actions, setActions] = useState<any>()
 
-  const { getTableProps, getTableBodyProps, rows, prepareRow, columns } =
+  const {getTableProps, getTableBodyProps, rows, prepareRow, columns} =
     useTable(
       {
         columns: mainTableColumns,
@@ -49,67 +47,58 @@ export default function MainTable({
           isOpen: boolean,
           actions: any
         ) => {
-          setAnchorEl((prev) => {
+          setAnchorEl(prev => {
             setIsContextMenuOpen(
               prev !== element || (prev === element && !isOpen)
-            );
+            )
 
-            return element;
-          });
-          setActions(actions);
-        },
+            return element
+          })
+          setActions(actions)
+        }
       },
       useSortBy,
       useExpanded
-    );
+    )
 
   return (
     <>
       <TableContainer component={Paper}>
         <Table {...getTableProps()}>
-          <TableHead className={"p-8"}>
-            <TableRow className={"bg-gray-100"}>
+          <TableHead className={'p-8'}>
+            <TableRow className={'bg-gray-100'}>
               {columns.map((column, index) => (
                 <TableCell
                   // @ts-ignore
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  style={{ textTransform: "uppercase" }}
-                  key={index}
-                >
-                  {column.render("Header")}
+                  style={{textTransform: 'uppercase'}}
+                  key={index}>
+                  {column.render('Header')}
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody {...getTableBodyProps()}>
             {rows.map((row, rowIndex) => {
-              prepareRow(row);
+              prepareRow(row)
               return (
                 <React.Fragment key={rowIndex}>
                   <TableRow
-                    className={"cursor-pointer hover:bg-gray-100"}
+                    className={'cursor-pointer hover:bg-gray-100'}
                     {...row.getRowProps()}
                     onClick={() =>
-                      router.push(
-                        getPathWithId(
-                          //@ts-ignore
-                          row.original.experimentId,
-                          Path.SingleExperiment
-                        )
-                      )
-                    }
-                  >
+                      navigate(`/experiment?id=${row.original.experimentId}`)
+                    }>
                     {row.cells.map((cell, index) => (
                       <TableCell
                         onClick={
-                          cell.column.id === "expander"
-                            ? (e) => e.stopPropagation()
+                          cell.column.id === 'expander'
+                            ? e => e.stopPropagation()
                             : undefined
                         }
                         {...cell.getCellProps()}
-                        key={index}
-                      >
-                        {cell.render("Cell")}
+                        key={index}>
+                        {cell.render('Cell')}
                       </TableCell>
                     ))}
                   </TableRow>
@@ -119,7 +108,7 @@ export default function MainTable({
                   {/*  mainTableColumns={mainTableColumns}*/}
                   {/*/>*/}
                 </React.Fragment>
-              );
+              )
             })}
           </TableBody>
         </Table>
@@ -131,7 +120,7 @@ export default function MainTable({
         actions={actions}
       />
     </>
-  );
+  )
 }
 
 /**
