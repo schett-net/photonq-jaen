@@ -1,75 +1,77 @@
-import React, { useMemo } from "react";
-import Link from "next/link";
-import { getPathWithId, Path } from "../../model/model.routes";
-import { useTranslation } from "react-i18next";
-import clsx from "clsx";
-import { ExperimentState } from "../../model/types/type.experiment";
+import clsx from 'clsx'
+import React, {useMemo} from 'react'
+import {useTranslation} from 'react-i18next'
 
-import { BaseEditorPageProps } from "../../pages/experiment/[slug]";
-import { useRouter } from "next/router";
-import { Button } from "@mui/material";
+import {Path} from '../../model/model.routes'
+import {ExperimentState} from '../../model/types/type.experiment'
+
+import {Button} from '@mui/material'
+import {Link, navigate} from 'gatsby'
+import type {BaseEditorPageProps} from '../../pages/experiment'
+import {getSearchParams} from '../../utils/queryParams'
 
 interface EditorNavbarProps extends BaseEditorPageProps {
-  reset: () => void;
+  reset: () => void
 }
 
 export default function ExperimentNavbar({
   experiment,
   isLoading,
-  reset,
+  reset
 }: EditorNavbarProps) {
-  const { t } = useTranslation();
-  const router = useRouter();
+  const {t} = useTranslation()
   const isResetButtonDisabled = useMemo(
     () => experiment.status !== ExperimentState.DRAFT || isLoading,
     [experiment, isLoading]
-  );
+  )
+
+  const type = getSearchParams()['type']
+  const name = getSearchParams()['name']
+
+  const isResult = useMemo(() => type === 'result', [type])
 
   return (
-    <div className={"relative w-full text-white"}>
-      <nav className={"absolute left-0 right-0 bg-secondaryDark py-4 px-8"}>
-        <div className={"grid grid-cols-3 w-full"}>
-          <div className={"flex items-center space-x-4 justify-self-start"}>
+    <div className={'relative w-full text-white'}>
+      <nav className={'absolute left-0 right-0 bg-secondaryDark py-4 px-8'}>
+        <div className={'grid grid-cols-3 w-full'}>
+          <div className={'flex items-center space-x-4 justify-self-start'}>
             <img
-              className={"cursor-pointer"}
-              onClick={() => router.push(Path.MyProjects)}
+              className={'cursor-pointer'}
+              onClick={() => navigate(Path.MyProjects)}
               src="/images/logo-white.png"
               alt="Logo of the university of vienna"
             />
-            <h2 className={"text-xl font-bold transition duration-200"}>
-              {isLoading ? "" : experiment.experimentName}
+            <h2 className={'text-xl font-bold transition duration-200'}>
+              {isLoading ? '' : experiment.experimentName}
             </h2>
           </div>
-          <div className={"flex space-x-4 items-center justify-center"}>
+          <div className={'flex space-x-4 items-center justify-center'}>
             <ExperimentLinkElement
-              highlight={!router.pathname.includes("result")}
-              path={Path.SingleExperiment}
-              id={experiment.experimentId}
-              text={"Editor"}
+              highlight={!isResult}
+              path={`?id=${experiment.experimentId}`}
+              text={'Editor'}
             />
             {experiment.status !== ExperimentState.DRAFT && (
               <ExperimentLinkElement
-                highlight={router.pathname.includes("result")}
-                path={Path.ExperimentResult}
-                id={experiment.experimentId}
+                highlight={isResult}
+                path={`?type=result&id=${experiment.experimentId}`}
                 disabled={experiment.experimentId === experiment.experimentName}
-                text={"Result"}
+                text={'Result'}
               />
             )}
           </div>
-          <div className={"flex justify-end items-center"}>
+          <div className={'flex justify-end items-center'}>
             <Button
               disabled={isResetButtonDisabled}
-              variant={"outlined"}
-              onClick={reset}
-            >
-              {t("Reset")}
+              variant={'outlined'}
+              onClick={reset}>
+              {t('Reset')}
             </Button>
           </div>
         </div>
       </nav>
     </div>
-  );
+  )
 }
 
 /**
@@ -83,45 +85,41 @@ export default function ExperimentNavbar({
  */
 function ExperimentLinkElement({
   highlight,
-  id,
   text,
   path,
-  disabled,
+  disabled
 }: {
-  highlight: boolean;
-  id: string;
-  text: string;
-  path: Path;
-  disabled?: boolean;
+  highlight: boolean
+  text: string
+  path: string
+  disabled?: boolean
 }) {
-  const { t } = useTranslation();
+  const {t} = useTranslation()
 
   if (disabled) {
     return (
       <p
-        className={clsx("text-lg", {
-          "text-gray": disabled,
-        })}
-      >
+        className={clsx('text-lg', {
+          'text-gray': disabled
+        })}>
         {t(text)}
       </p>
-    );
+    )
   }
 
   return (
-    <Link href={getPathWithId(id, path)}>
+    <Link to={path}>
       <p
-        style={{ textTransform: "uppercase" }}
+        style={{textTransform: 'uppercase'}}
         className={clsx(
-          "cursor-pointer text-lg duration-300 transform hover:underline",
+          'cursor-pointer text-lg duration-300 transform hover:underline',
           {
-            "underline font-bold text-white": highlight,
-            "text-primary": !highlight,
+            'underline font-bold text-white': highlight,
+            'text-primary': !highlight
           }
-        )}
-      >
+        )}>
         {t(text)}
       </p>
     </Link>
-  );
+  )
 }

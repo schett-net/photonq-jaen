@@ -25,11 +25,10 @@
     "@jaenjs/jaen": "^3.0.0-beta.71",
     "@loadable/component": "^5.15.2",
     "@material-ui/utils": "^4.11.3",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
     "@tailwindcss/typography": "^0.5.4",
     "@types/react-helmet": "^6.1.5",
-    "bootstrap": "^5.1.3",
-    "bootstrap-icons": "^1.9.0",
     "framer-motion": "^4",
     "gatsby": "^4.18.2",
     "gatsby-plugin-fontawesome-css": "^1.2.0",
@@ -45,7 +44,8 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
-    "react-i18next": "^11.18.3"
+    "react-i18next": "^11.18.3",
+    "react-table": "^7.8.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",

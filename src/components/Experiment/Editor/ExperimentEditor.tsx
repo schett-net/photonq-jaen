@@ -1,29 +1,30 @@
-import { CircularProgress } from "@mui/material";
-import { useRouter } from "next/router";
-import { useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
+import {CircularProgress} from '@mui/material'
+import {navigate} from 'gatsby'
+import React, {useMemo, useState} from 'react'
+
+import {useTranslation} from 'react-i18next'
 import {
   CircuitConfig,
-  circuitConfigs,
-} from "../../../circuitConfig/circuits4Dv004";
-import { useConnectedUser } from "../../../hook/hook.user";
-import { createExperiment } from "../../../model/model.api";
-import { getPathWithId, Path } from "../../../model/model.routes";
-import { ExperimentState } from "../../../model/types/type.experiment";
-import { BaseEditorPageProps } from "../../../pages/experiment/[slug]";
-import SystemAlert from "../../SystemAlert";
-import SystemDialog from "../../SystemDialog/SystemDialog";
-import DropDownButton from "../DropDownButton";
-import ClusterStateSection from "./Sections/ClusterStateSection";
-import DemultiplexerSection from "./Sections/DemultiplexerSection";
-import QubitComputingSection from "./Sections/QubitComputingSection";
-import QubitMeasurementSection from "./Sections/QubitMeasurementSection";
-import { deleteProps, prepareExperiment } from "../../../utils/utils.object";
+  circuitConfigs
+} from '../../../circuitConfig/circuits4Dv004'
+import {useConnectedUser} from '../../../hook/hook.user'
+import {createExperiment} from '../../../model/model.api'
+import {ExperimentState} from '../../../model/types/type.experiment'
+import {BaseEditorPageProps} from '../../../pages/experiment'
+import {getSearchParams} from '../../../utils/queryParams'
+import {prepareExperiment} from '../../../utils/utils.object'
+import SystemAlert from '../../SystemAlert'
+import SystemDialog from '../../SystemDialog/SystemDialog'
+import DropDownButton from '../DropDownButton'
+import ClusterStateSection from './Sections/ClusterStateSection'
+import DemultiplexerSection from './Sections/DemultiplexerSection'
+import QubitComputingSection from './Sections/QubitComputingSection'
+import QubitMeasurementSection from './Sections/QubitMeasurementSection'
 
 interface ExperimentEditorProps extends BaseEditorPageProps {
-  action: () => void;
-  isDialogOpen: boolean;
-  setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  action: () => void
+  isDialogOpen: boolean
+  setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 /**
@@ -32,26 +33,26 @@ interface ExperimentEditorProps extends BaseEditorPageProps {
  * @constructor
  */
 function MaxRuntimeDialog(props: {
-  open: boolean;
-  isOpen: (value: ((prevState: boolean) => boolean) | boolean) => void;
-  onButtonClick: (input?: string) => string | undefined;
-  currentMaxRuntime: string;
+  open: boolean
+  isOpen: (value: ((prevState: boolean) => boolean) | boolean) => void
+  onButtonClick: (input?: string) => string | undefined
+  currentMaxRuntime: string
 }) {
   return (
     <SystemDialog
       defaultInput={props.currentMaxRuntime}
-      inputType={"number"}
+      inputType={'number'}
       isOpen={props.open}
       setIsOpen={props.isOpen}
-      label={"Max Runtime"}
-      buttonText={"Save"}
+      label={'Max Runtime'}
+      buttonText={'Save'}
       onButtonClick={props.onButtonClick}
-      title={"Set Max Runtime"}
+      title={'Set Max Runtime'}
     />
-  );
+  )
 }
 
-const MAX_RUNTIME = 120;
+const MAX_RUNTIME = 120
 
 function ExperimentEditor({
   experiment,
@@ -59,53 +60,55 @@ function ExperimentEditor({
   isLoading,
   action,
   isDialogOpen,
-  setIsDialogOpen,
+  setIsDialogOpen
 }: ExperimentEditorProps) {
-  const [error, setError] = useState(false);
-  const { t } = useTranslation();
-  const user = useConnectedUser();
-  const router = useRouter();
+  const [error, setError] = useState(false)
+  const {t} = useTranslation()
+  const user = useConnectedUser()
+
+  const {id} = getSearchParams<{id: string}>()
 
   const currentConfig = useMemo<CircuitConfig | undefined>(
-    () => circuitConfigs.find((c) => c.circuit_id === experiment.circuitId),
+    () => circuitConfigs.find(c => c.circuit_id === experiment.circuitId),
     [experiment.circuitId]
-  );
-  const inputsDisabled = useMemo<boolean>(
-    () => router.query.slug !== "new",
-    [router.query.slug]
-  );
+  )
+  const inputsDisabled = useMemo<boolean>(() => id !== 'new', [id])
 
   const runExperiment = async () => {
     try {
-      const kexperiment = prepareExperiment(experiment, ["experimentId", "withQubitConfig", "config"])
+      const kexperiment = prepareExperiment(experiment, [
+        'experimentId',
+        'withQubitConfig',
+        'config'
+      ])
       const res = await createExperiment(
         {
           circuitId: kexperiment.circuitId,
           experimentName: kexperiment.experimentName,
           projectId: kexperiment.projectId,
           maxRuntime: kexperiment.maxRuntime,
-          ComputeSettings: kexperiment.ComputeSettings,
+          ComputeSettings: kexperiment.ComputeSettings
         },
         user!.token
-      );
-      router.push(getPathWithId(res.experimentId, Path.ExperimentResult));
+      )
+      navigate(`?id=${res.experimentId}?type=result`)
     } catch (e) {
-      console.error(e);
-      setError(true);
-      setTimeout(() => setError(false), 5000);
+      console.error(e)
+      setError(true)
+      setTimeout(() => setError(false), 5000)
     }
-  };
+  }
 
   if (isLoading) {
     return (
-      <div className={"h-screen flex justify-center items-center"}>
+      <div className={'h-screen flex justify-center items-center'}>
         <CircularProgress size={80} />
       </div>
-    );
+    )
   }
 
   return (
-    <div className={"space-y-20 py-16"}>
+    <div className={'space-y-20 py-16'}>
       <DemultiplexerSection />
       <ClusterStateSection
         inputsDisabled={inputsDisabled}
@@ -124,18 +127,17 @@ function ExperimentEditor({
         setExperiment={setExperiment}
         currentConfig={currentConfig}
       />
-      <div className={"flex justify-end items-center"}>
+      <div className={'flex justify-end items-center'}>
         <DropDownButton
           isDisabled={inputsDisabled}
           actions={[
             {
-              label: "Set Max Runtime",
-              action: action,
-            },
+              label: 'Set Max Runtime',
+              action: action
+            }
           ]}
-          onClick={runExperiment}
-        >
-          {t("Run")}
+          onClick={runExperiment}>
+          {t('Run')}
         </DropDownButton>
       </div>
       {isDialogOpen && experiment.status === ExperimentState.DRAFT && (
@@ -143,28 +145,28 @@ function ExperimentEditor({
           currentMaxRuntime={experiment.maxRuntime.toString()}
           open={isDialogOpen}
           isOpen={setIsDialogOpen}
-          onButtonClick={(input) => {
-            if (!input) return;
+          onButtonClick={input => {
+            if (!input) return
             if (+input > MAX_RUNTIME) {
-              return `Has to be smaller or equal than ${MAX_RUNTIME}`;
+              return `Has to be smaller or equal than ${MAX_RUNTIME}`
             }
             if (+input < 1) {
-              return `Has to be at least 1`;
+              return `Has to be at least 1`
             }
-            setExperiment((prev) => ({
+            setExperiment(prev => ({
               ...prev,
-              maxRuntime: +input,
-            }));
+              maxRuntime: +input
+            }))
           }}
         />
       )}
       {error && !isLoading && (
-        <SystemAlert severity={"error"}>
-          {t("Could not run Experiment")}
+        <SystemAlert severity={'error'}>
+          {t('Could not run Experiment')}
         </SystemAlert>
       )}
     </div>
-  );
+  )
 }
 
-export default ExperimentEditor;
+export default ExperimentEditor
