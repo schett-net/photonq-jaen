@@ -23,8 +23,6 @@ function EditorPage(props: PageProps) {
     id || 'new'
   )
 
-  console.log('experiment', experiment, isLoading)
-
   const reset = () => {
     const defaultExperiment = getDefaultExperimentConfig(
       experiment.experimentName
