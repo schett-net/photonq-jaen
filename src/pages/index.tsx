@@ -62,6 +62,7 @@ export const IndexPage = (props: PageProps) => {
               content={
                 <Field.Text
                   name="sectionLogosContent"
+                  rtf
                   defaultValue="We are a team of scientists, designers, and software developers at the Christian Doppler Laboratory for Photonic Quantum Computing at the Faculty of Physics at the University of Vienna. Our research focus is on the development and operation of a photonic quantum computer platform and we are committed to providing free online access to a photonic quantum computer through cloud-based services. You can already experiment with our four-qubit processor today!"
                 />
               }
