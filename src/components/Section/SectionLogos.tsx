@@ -27,20 +27,24 @@ export default function SectionContent({
           className={clsx('w-9/12 md:w-4/12 justify-center items-center', {
             ['md:w-4/12']: maxWidthImage
           })}>
-          <Field.Image
-            name="logo0"
-            objectFit="contain"
-            defaultValue={'https://photonq.at/images/CDG_Logo.svg'}
-            alt="Logo Christian Doppler Forschungsgesellschaft"
-            imgStyle={{maxWidth: maxWidthImage}}
-          />
-          <Field.Image
-            name="logo1"
-            objectFit="contain"
-            defaultValue={'https://photonq.at/images/uni-wien-logo.svg'}
-            alt="Logo Uni Wien"
-            imgStyle={{maxWidth: maxWidthImage}}
-          />
+          <div className="w-full h-56">
+            <Field.Image
+              name="logo1"
+              objectFit="contain"
+              defaultValue={'https://photonq.at/images/uni-wien-logo.svg'}
+              alt="Logo Uni Wien"
+              imgStyle={{maxWidth: maxWidthImage}}
+            />
+          </div>
+          <div className="w-full h-56">
+            <Field.Image
+              name="logo2"
+              objectFit="contain"
+              defaultValue={'https://photonq.at/images/CDG_Logo.svg'}
+              alt="Logo Christian Doppler Forschungsgesellschaft"
+              imgStyle={{maxWidth: maxWidthImage}}
+            />
+          </div>
         </div>
       </div>
     </div>
