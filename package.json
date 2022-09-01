@@ -13,7 +13,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "gatsby build && cp CNAME public/ && gh-pages -d public"
   },
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^2.0.1",
@@ -47,7 +48,9 @@
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.18.3",
     "react-table": "^7.8.0",
-    "zxcvbn": "^4.4.2"
+    "zxcvbn": "^4.4.2",
+    "gh-pages": "^4.0.0"
+
   },
   "devDependencies": {
     "@types/node": "^17.0.45",
