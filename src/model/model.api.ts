@@ -1,3 +1,5 @@
+import { login, logout } from '@snek-functions/origin'
+
 import {
   BaseApiFetchPayload,
   BASE_ENDPOINT_URL,
@@ -153,15 +155,22 @@ export async function createExperiment(
 export async function loginWthUserNameAndPassword(
   credentials: LoginCredentials
 ): Promise<LoginResponse> {
-  const response = await baseApiFetch({
-    method: Method.POST,
-    endpoint: Endpoint.Login,
-    body: credentials
+  const data = await login({
+    username: credentials.username,
+    password: credentials.password
   })
-  if (!response.ok) {
-    throw new Error('Could not login with credentials: ' + credentials)
+
+  return {
+    user: {
+      id: '1234',
+      username: 'Test-User',
+      email: 'snekman@snek.at'
+    }
   }
-  return response.json()
+}
+
+export async function logoutUser(){
+  await logout()
 }
 
 /**

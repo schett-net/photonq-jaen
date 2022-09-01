@@ -60,17 +60,17 @@ export default function Footer({alwaysAtBottom}: FooterProps) {
             <p className={'font-bold'}>Partners</p>
             <div className="flex space-x-14">
               <div className="flex flex-col space-y-4 mt-3">
-                <Link href="https://www.cdg.ac.at/">
+                <Link href="https://www.cdg.ac.at/" style={{color: '#FFF'}}>
                   <a target="_blank" className="cursor-pointer">
                     Christian Doppler Forschungsgesellschaft (CDG)
                   </a>
                 </Link>
-                <Link href="https://www.univie.ac.at/">
+                <Link href="https://www.univie.ac.at/" style={{color: '#FFF'}}>
                   <a target="_blank" className="cursor-pointer">
                     University of Vienna
                   </a>
                 </Link>
-                <Link href="https://www.tencent.com/">
+                <Link href="https://www.tencent.com/" style={{color: '#FFF'}}>
                   <a target="_blank" className="cursor-pointer">
                     Tencent Mobility Limited
                   </a>

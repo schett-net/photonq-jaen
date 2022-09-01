@@ -1,3 +1,4 @@
+import {Field} from '@jaenjs/jaen'
 import {
   Alert,
   Checkbox,
@@ -86,7 +87,7 @@ export default function RegisterForm() {
   return (
     <>
       <AuthFormContainer
-        header={'Registration'}
+        header={<Field.Text name="register" defaultValue="Registration" />}
         onSubmit={e => {
           handleOnSubmit(e)
         }}>

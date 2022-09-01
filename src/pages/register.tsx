@@ -1,4 +1,4 @@
-import {connectPage} from '@jaenjs/jaen'
+import {connectPage, Field} from '@jaenjs/jaen'
 import {Grid} from '@mui/material'
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
@@ -26,9 +26,17 @@ export function RegisterPage(props: PageProps) {
           </Grid>
           <Grid item md={5}>
             <AuthContent
-              header={'Start quantum computing with us!'}
+              header={
+                <Field.Text
+                  name="header"
+                  defaultValue="Start quantum computing with us!"
+                />
+              }
               content={
-                'Our intuitive approach makes it easy for beginners to start with quantum computing and allows experts and educators to run complex photonic experiments on real quantum hardware.'
+                <Field.Text
+                  name="content"
+                  defaultValue="Our intuitive approach makes it easy for beginners to start with quantum computing and allows experts and educators to run complex photonic experiments on real quantum hardware."
+                />
               }
             />
           </Grid>

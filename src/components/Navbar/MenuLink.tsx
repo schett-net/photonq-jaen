@@ -1,7 +1,9 @@
-import { navigate } from '@jaenjs/jaen'
+import {navigate} from '@jaenjs/jaen'
 import clsx from 'clsx'
-import Cookies from 'js-cookie'
-import React from 'react'
+import React, {useContext} from 'react'
+import {logoutUser} from '../../model/model.api'
+import {Path} from '../../model/model.routes'
+import {AuthContext} from '../../providers/AuthProvider'
 
 export default function MenuLink(props: {
   route: {
@@ -14,12 +16,17 @@ export default function MenuLink(props: {
   variant: 'mobile' | 'desktop'
   setMobileNavBarOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }) {
+  const {setValue: setUser} = useContext(AuthContext)
+
   return (
     <a
-      onClick={() => {
+      onClick={async () => {
         props.setMobileNavBarOpen?.(false)
         if (props.route.clearAuthState) {
-          Cookies.remove('user')
+          await logoutUser()
+          setUser(undefined)
+          // navigate to home page
+          navigate(Path.Login)
         } else {
           navigate(props.route.href)
         }

@@ -1,12 +1,13 @@
-import {TextField} from '@mui/material'
-import {red} from '@mui/material/colors'
-import {Link, navigate} from 'gatsby'
-import React, {useContext, useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {loginWthUserNameAndPassword} from '../../model/model.api'
-import {Path} from '../../model/model.routes'
-import {LoginCredentials} from '../../model/types/type.auth'
-import {AuthContext} from '../../providers/AuthProvider'
+import { Field } from '@jaenjs/jaen'
+import { TextField } from '@mui/material'
+import { red } from '@mui/material/colors'
+import { Link, navigate } from 'gatsby'
+import React, { useContext, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { loginWthUserNameAndPassword } from '../../model/model.api'
+import { Path } from '../../model/model.routes'
+import { LoginCredentials } from '../../model/types/type.auth'
+import { AuthContext } from '../../providers/AuthProvider'
 import LoadingButton from '../LoadingButton'
 import AuthFormContainer from './AuthFormContainer'
 import PasswordField from './PasswordField'
@@ -36,12 +37,7 @@ export default function LoginForm() {
         username: loginValues.username,
         password: loginValues.password
       })
-      setUser({
-        token: response.token,
-        id: response.id,
-        username: response.email,
-        name: response.name
-      })
+      setUser(response.user)
       setError('')
       navigate(Path.MyProjects)
     } catch (e) {
@@ -52,7 +48,7 @@ export default function LoginForm() {
   }
 
   return (
-    <AuthFormContainer header={'Sign in to PhotonQ'} onSubmit={e => login(e)}>
+    <AuthFormContainer header={<Field.Text name="login" defaultValue="Sign in to PhotonQ" />} onSubmit={e => login(e)}>
       <TextField
         value={loginValues.username}
         onChange={e => handleOnChange(e, 'username')}
