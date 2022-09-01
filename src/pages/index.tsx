@@ -3,7 +3,6 @@ import {graphql, PageProps} from 'gatsby'
 import * as React from 'react'
 
 import DocumentationPreview from '../components/DocumentationPreview/DocumentationPreview'
-import Footer from '../components/Footer/Footer'
 import HomeHero from '../components/HomeHero/HomeHero'
 import MaxWidthContainer from '../components/Layout/MaxWidthContainer'
 import PageLayout from '../components/Layout/PageLayout'
@@ -26,6 +25,7 @@ export const IndexPage = (props: PageProps) => {
             <QuantenComputingUiPreview />
           </Section>
         </MaxWidthContainer>
+
         <Section withVerticalPadding fullWidth>
           <SectionFade
             header={
@@ -69,11 +69,6 @@ export const IndexPage = (props: PageProps) => {
             />
           </Section>
         </MaxWidthContainer>
-        <Section fullWidth>
-          <div className={'pt-16 lg:pt-28 2xl:pt-32'}>
-            <Footer />
-          </div>
-        </Section>
       </div>
     </PageLayout>
   )
@@ -85,4 +80,7 @@ export const query = graphql`
   }
 `
 
-export default connectPage(IndexPage, {displayName: 'IndexPage'})
+export default connectPage(IndexPage, {
+  displayName: 'IndexPage',
+  children: ['Index']
+})

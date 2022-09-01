@@ -2,7 +2,6 @@ import {connectPage} from '@jaenjs/jaen'
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
-import Footer from '../components/Footer/Footer'
 import NavbarPadding from '../components/Layout/NavbarPadding'
 import PageLayout from '../components/Layout/PageLayout'
 import Section from '../components/Section/Section'
@@ -247,11 +246,6 @@ export const LegalPage = (props: PageProps) => {
             </Section>
           </div>
         </div>
-        <Section fullWidth>
-          <div className="pt-24">
-            <Footer />
-          </div>
-        </Section>
       </div>
     </PageLayout>
   )

@@ -1,15 +1,16 @@
-import { navigate } from '@jaenjs/jaen'
+import {navigate} from '@jaenjs/jaen'
 import clsx from 'clsx'
-import React, { useMemo, useState } from 'react'
+import React, {useContext, useMemo, useState} from 'react'
 import {
   getLoggedInNavbarRoutes,
   getLoggedOutNavbarRoutes
 } from '../../common/routes'
+import {AuthContext} from '../../providers/AuthProvider'
 import MenuLink from './MenuLink'
 import ToggleButton from './TogglButton'
 
 export default function Navbar({pathname}: {pathname: string}) {
-  const user = false
+  const {value: user} = useContext(AuthContext)
   const [mobileNavBarOpen, setMobileNavBarOpen] = useState(false)
 
   const getRoutes = () => {
