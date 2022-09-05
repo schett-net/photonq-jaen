@@ -3,10 +3,16 @@ import {useEffect, useMemo, useState} from 'react'
 
 import {GuideCategory} from './GuideFilter'
 
-export function useGuideFilter(props: {jaenPageId: string}) {
+export function useGuideFilter(props: {jaenPageId?: string}) {
   const {children: guides, withJaenPage} = useJaenPageIndex({
-    jaenPageId: props.jaenPageId
+    jaenPageId: props.jaenPageId,
+    filter: page => {
+      console.log('page', page)
+      return true
+    }
   })
+
+  console.log(`guides`, guides)
 
   const [isFirstFetch, setIsFirstFetch] = useState(true)
   const [isLoading, setIsLoading] = useState(false)

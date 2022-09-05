@@ -6,6 +6,14 @@ import {HowToGuidesPage} from '../pages/how-to-guides'
 export const query = graphql`
   query ($jaenPageId: String!) {
     ...JaenPageQuery
+    allJaenPage {
+      nodes {
+        ...JaenPageData
+        children {
+          ...JaenPageData
+        }
+      }
+    }
   }
 `
 
