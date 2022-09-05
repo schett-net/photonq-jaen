@@ -77,6 +77,14 @@ export const IndexPage = (props: PageProps) => {
 export const query = graphql`
   query ($jaenPageId: String!) {
     ...JaenPageQuery
+    allJaenPage {
+      nodes {
+        ...JaenPageData
+        children {
+          ...JaenPageData
+        }
+      }
+    }
   }
 `
 

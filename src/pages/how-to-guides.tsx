@@ -1,10 +1,10 @@
-import { connectPage, Field } from '@jaenjs/jaen'
-import { graphql, PageProps } from 'gatsby'
+import {connectPage, Field} from '@jaenjs/jaen'
+import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 import GuidePreview from '../components/DocumentationPreview/GuidePreview'
-import { GuidePreviewGrid } from '../components/DocumentationPreview/GuidePreviewGrid'
+import {GuidePreviewGrid} from '../components/DocumentationPreview/GuidePreviewGrid'
 import GuideFilter from '../components/GuideFilter/GuideFilter'
-import { useGuideFilter } from '../components/GuideFilter/hook.guideFilter'
+import {useGuideFilter} from '../components/GuideFilter/hook.guideFilter'
 import MaxWidthContainer from '../components/Layout/MaxWidthContainer'
 import NavbarPadding from '../components/Layout/NavbarPadding'
 import PageLayout from '../components/Layout/PageLayout'
@@ -18,9 +18,7 @@ export function HowToGuidesPage(props: PageProps) {
     filteredGuides,
     isLoading,
     withJaenPage
-  } = useGuideFilter({
-    jaenPageId: 'JaenPage /how-to-guides/'
-  })
+  } = useGuideFilter({})
 
   return (
     <PageLayout pathname={props.path}>
@@ -63,7 +61,7 @@ computing experiment.`}
                 <GuidePreviewGrid>
                   {filteredGuides.map(child =>
                     withJaenPage(
-                      child.id,
+                      child.l,
                       <GuidePreview
                         key={child.id}
                         index="how-to-guides"
@@ -84,6 +82,14 @@ computing experiment.`}
 export const query = graphql`
   query ($jaenPageId: String!) {
     ...JaenPageQuery
+    allJaenPage {
+      nodes {
+        ...JaenPageData
+        children {
+          ...JaenPageData
+        }
+      }
+    }
   }
 `
 
