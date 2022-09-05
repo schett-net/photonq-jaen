@@ -23,7 +23,7 @@
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@jaenjs/jaen": "^3.0.0-beta.76",
+    "@jaenjs/jaen": "^3.0.0-beta.78",
     "@loadable/component": "^5.15.2",
     "@material-ui/utils": "^4.11.3",
     "@mui/icons-material": "^5.8.4",
@@ -41,16 +41,16 @@
     "gatsby-plugin-react-helmet": "^5.18.0",
     "gatsby-plugin-sass": "^5.18.1",
     "gatsby-theme-material-ui": "^5.2.0",
+    "gh-pages": "^4.0.0",
     "js-cookie": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.18.3",
     "react-table": "^7.8.0",
-    "zxcvbn": "^4.4.2",
-    "gh-pages": "^4.0.0"
-
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",

@@ -18,7 +18,9 @@ export function HowToGuidesPage(props: PageProps) {
     filteredGuides,
     isLoading,
     withJaenPage
-  } = useGuideFilter({})
+  } = useGuideFilter({
+    jaenPageId: 'JaenPage /how-to-guides/'
+  })
 
   return (
     <PageLayout pathname={props.path}>
@@ -61,7 +63,7 @@ computing experiment.`}
                 <GuidePreviewGrid>
                   {filteredGuides.map(child =>
                     withJaenPage(
-                      child.l,
+                      child.id,
                       <GuidePreview
                         key={child.id}
                         index="how-to-guides"
@@ -81,13 +83,10 @@ computing experiment.`}
 
 export const query = graphql`
   query ($jaenPageId: String!) {
-    ...JaenPageQuery
-    allJaenPage {
-      nodes {
+    jaenPage(id: {eq: $jaenPageId}) {
+      ...JaenPageData
+      children {
         ...JaenPageData
-        children {
-          ...JaenPageData
-        }
       }
     }
   }

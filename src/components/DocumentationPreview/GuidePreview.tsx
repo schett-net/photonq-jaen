@@ -1,4 +1,4 @@
-import {connectSection, Field, navigate, useField} from '@jaenjs/jaen'
+import {Field, navigate, useField} from '@jaenjs/jaen'
 import React from 'react'
 
 function GuidePreview(props: {index: string; slug: string}) {
@@ -50,6 +50,7 @@ function GuidePreview(props: {index: string; slug: string}) {
         <h4>
           <Field.Text
             name="title"
+            rtf
             defaultValue={'foo'}
             className="text-lg font-bold"
           />
@@ -65,7 +66,4 @@ function GuidePreview(props: {index: string; slug: string}) {
   )
 }
 
-export default connectSection(GuidePreview, {
-  name: 'GuidePreview',
-  displayName: 'GuidePreview'
-})
+export default GuidePreview
