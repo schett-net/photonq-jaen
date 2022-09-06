@@ -22,7 +22,7 @@ const PreviewComponent = (props: {name: string}) => {
 
 export default function QuantenComputingUiPreview() {
   return (
-    <div className="md:flex justify-between space-y-5 space-x-5 md:space-y-0 h-96">
+    <div className="md:flex md:h-96">
       <PreviewComponent name="left" />
       <PreviewComponent name="middle" />
       <PreviewComponent name="right" />
