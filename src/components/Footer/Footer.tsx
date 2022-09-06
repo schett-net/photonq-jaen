@@ -1,5 +1,5 @@
-import {navigate} from '@jaenjs/jaen'
-import {Link} from '@mui/material'
+import { navigate } from '@jaenjs/jaen'
+import { Link } from '@mui/material'
 import clsx from 'clsx'
 import React from 'react'
 import MaxWidthContainer from '../Layout/MaxWidthContainer'
@@ -67,11 +67,11 @@ export default function Footer({alwaysAtBottom}: FooterProps) {
                     University of Vienna
                   </a>
                 </Link>
-                <Link href="https://www.tencent.com/" style={{color: '#FFF'}}>
+                {/* <Link href="https://www.tencent.com/" style={{color: '#FFF'}}>
                   <a target="_blank" className="cursor-pointer">
                     Tencent Mobility Limited
                   </a>
-                </Link>
+                </Link> */}
               </div>
               {/*}
               <div className="flex flex-col space-y-4 mt-3">
