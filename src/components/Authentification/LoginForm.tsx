@@ -1,13 +1,13 @@
-import { Field } from '@jaenjs/jaen'
-import { TextField } from '@mui/material'
-import { red } from '@mui/material/colors'
-import { Link, navigate } from 'gatsby'
-import React, { useContext, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { loginWthUserNameAndPassword } from '../../model/model.api'
-import { Path } from '../../model/model.routes'
-import { LoginCredentials } from '../../model/types/type.auth'
-import { AuthContext } from '../../providers/AuthProvider'
+import {Field} from '@jaenjs/jaen'
+import {TextField} from '@mui/material'
+import {red} from '@mui/material/colors'
+import {Link, navigate} from 'gatsby'
+import React, {useContext, useState} from 'react'
+import {useTranslation} from 'react-i18next'
+import {loginWthUserNameAndPassword} from '../../model/model.api'
+import {Path} from '../../model/model.routes'
+import {LoginCredentials} from '../../model/types/type.auth'
+import {AuthContext} from '../../providers/AuthProvider'
 import LoadingButton from '../LoadingButton'
 import AuthFormContainer from './AuthFormContainer'
 import PasswordField from './PasswordField'
@@ -41,14 +41,16 @@ export default function LoginForm() {
       setError('')
       navigate(Path.MyProjects)
     } catch (e) {
-      setError('Authorization information is missing or invalid.')
+      setError(e.message)
     } finally {
       setIsLoading(() => false)
     }
   }
 
   return (
-    <AuthFormContainer header={<Field.Text name="login" defaultValue="Sign in to PhotonQ" />} onSubmit={e => login(e)}>
+    <AuthFormContainer
+      header={<Field.Text name="login" defaultValue="Sign in to PhotonQ" />}
+      onSubmit={e => login(e)}>
       <TextField
         value={loginValues.username}
         onChange={e => handleOnChange(e, 'username')}
