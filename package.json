@@ -11,12 +11,12 @@
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
-    "build:incremental": "yarn build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "deploy:incremental": "yarn deploy",
-    "deploy": "gatsby build && cp CNAME public/ && gh-pages -d public"
+    "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "deploy": "gatsby build && cp CNAME public/ && gh-pages -d public",
+    "deploy:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build && cp CNAME public/ && gh-pages -d public"
   },
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^2.0.1",
