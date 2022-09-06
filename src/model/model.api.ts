@@ -1,4 +1,4 @@
-import { login, logout } from '@snek-functions/origin'
+import {login, logout} from '@snek-functions/origin'
 
 import {
   BaseApiFetchPayload,
@@ -155,10 +155,12 @@ export async function createExperiment(
 export async function loginWthUserNameAndPassword(
   credentials: LoginCredentials
 ): Promise<LoginResponse> {
-  const data = await login({
+  const {data, errors} = await login.execute({
     username: credentials.username,
     password: credentials.password
   })
+
+  if (errors) throw new Error(errors[0].message)
 
   return {
     user: {
@@ -169,7 +171,7 @@ export async function loginWthUserNameAndPassword(
   }
 }
 
-export async function logoutUser(){
+export async function logoutUser() {
   await logout()
 }
 
