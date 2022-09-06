@@ -30,5 +30,4 @@ export const chakraTheme = extendTheme()
 
 // Merge the theme instances.
 // Ref: https://github.com/mui/material-ui/issues/25852#issuecomment-831213670
-console.log(deepmerge(muiTheme, chakraTheme))
 export default deepmerge(muiTheme, chakraTheme)
