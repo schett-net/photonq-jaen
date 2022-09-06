@@ -1,27 +1,31 @@
 import clsx from 'clsx'
-import React, {ReactNode} from 'react'
+import React, { ReactNode } from 'react'
 
 interface SectionProps {
   fullWidth?: boolean
+  primaryBackground?: boolean
   withVerticalPadding?: boolean
   withHorizontalPadding?: boolean
   children: ReactNode
 }
 
 export default function Section({
-  withHorizontalPadding,
+  primaryBackground,
   withVerticalPadding,
   fullWidth,
-  children
+  children,
+  withHorizontalPadding
 }: SectionProps) {
   return (
     <section
       className={clsx('w-full', {
-        ['px-8']: withHorizontalPadding,
         ['py-16 lg:py-32 2xl:py-36']: withVerticalPadding,
-        ['w-screen']: fullWidth
+        ['px-8']: withHorizontalPadding,
+        ['w-full']: fullWidth,
+        ['bg-primary']: primaryBackground,
+        ['text-white']: primaryBackground
       })}>
-      {children}
+     {children}
     </section>
   )
 }

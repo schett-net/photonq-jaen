@@ -34,7 +34,7 @@ export default function GuideHeader({
         </div>
       </PortableTextContainer>
 
-      <div className="w-screen h-80">{mainImage}</div>
+      <div className="h-80">{mainImage}</div>
     </div>
   )
 }

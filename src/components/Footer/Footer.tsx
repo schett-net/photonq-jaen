@@ -11,12 +11,9 @@ interface FooterProps {
 export default function Footer({alwaysAtBottom}: FooterProps) {
   return (
     <footer
-      className={clsx(
-        'w-screen flex justify-center bg-primary text-white py-10 px-8 md:px-16',
-        {
-          'absolute bottom-0 left-0': alwaysAtBottom
-        }
-      )}>
+      className={clsx('flex justify-center py-10 px-8 md:px-16', {
+        'absolute bottom-0 left-0': alwaysAtBottom
+      })}>
       <MaxWidthContainer>
         <div className="flex flex-col md:flex-row justify-between space-y-5 md:space-y-0">
           <div>
