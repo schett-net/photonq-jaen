@@ -21,7 +21,7 @@ export const IndexPage = (props: PageProps) => {
           <HomeHero />
         </Section>
         <MaxWidthContainer>
-          <Section withVerticalPadding>
+          <Section withVerticalPadding withHorizontalPadding>
             <QuantenComputingUiPreview />
           </Section>
         </MaxWidthContainer>
@@ -43,7 +43,7 @@ export const IndexPage = (props: PageProps) => {
           />
         </Section>
         <MaxWidthContainer>
-          <Section withVerticalPadding>
+          <Section withVerticalPadding withHorizontalPadding>
             <DocumentationPreview />
           </Section>
         </MaxWidthContainer>
@@ -51,7 +51,7 @@ export const IndexPage = (props: PageProps) => {
           <PrimaryCTA />
         </Section>
         <MaxWidthContainer>
-          <Section withVerticalPadding>
+          <Section withVerticalPadding withHorizontalPadding>
             <SectionLogos
               header={
                 <Field.Text

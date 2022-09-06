@@ -12,7 +12,7 @@ export default function HomeHero() {
       <NavbarPadding />
 
       <BgFade className="flex flex-col xl:flex-row-reverse items-center justify-center align-center">
-        <div className="max-w-lg xl:max-w-4xl w-[56rem] h-[32rem]">
+        <div className="max-w-lg xl:max-w-4xl w-[90vw] h-[20rem] sm:w-[56rem] sm:h-[32rem]">
           <Field.Image
             name="heroImage"
             objectFit="contain"

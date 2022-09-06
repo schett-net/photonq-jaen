@@ -49,7 +49,7 @@ export default function AuthProvider({path, children}: AuthProviderProps) {
       loading
     ) {
       return (
-        <div className={'w-screen h-screen flex justify-center items-center'}>
+        <div className={'w-screen h-screen flex justify-center items-center relative'}>
           <CircularProgress size={50} />
         </div>
       )
