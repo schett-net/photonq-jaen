@@ -1,4 +1,4 @@
-import {login, logout} from '@snek-functions/origin'
+import {login, logout, jsonFetch} from '@snek-functions/origin'
 
 import {
   BaseApiFetchPayload,
@@ -31,15 +31,20 @@ async function baseApiFetch<T>({
   body,
   token
 }: BaseApiFetchPayload<T>) {
-  return fetch(`${BASE_ENDPOINT_URL}${endpoint}${params ? '/' + params : ''}`, {
+  const url = `${BASE_ENDPOINT_URL}${endpoint}${params ? '/' + params : ''}`
+  const init = {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: token ? `Token ${token}` : ''
+      Authorization: `bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNjYyNDQ1MTQzLCJleHAiOjE2NjI0NDU0NDMsImF1ZCI6IiIsImlzcyI6InNuZWstMCIsInN1YiI6IjEiLCJqdGkiOiI2NDk2MGQ1Yi1iMmVlLTQyNTctYTk5NC1iNTFmNDlmYTliN2YifQ.GHghLa0cEfICoYnLSfQab4vaHAZvx7t998EIO5OES34`
     },
     method,
     body: JSON.stringify(body)
-  })
+  }
+
+  //return jsonFetch([url, init])
+
+  return fetch(`${BASE_ENDPOINT_URL}${endpoint}${params ? '/' + params : ''}`)
 }
 
 /**
@@ -156,16 +161,17 @@ export async function loginWthUserNameAndPassword(
   credentials: LoginCredentials
 ): Promise<LoginResponse> {
   const {data, errors} = await login.execute({
-    username: credentials.username,
+    username: 'cis.co',
     password: credentials.password
   })
 
-  if (errors) throw new Error(errors[0].message)
+  if (errors.length > 0) throw new Error(errors[0].message)
 
   return {
     user: {
       id: '1234',
       username: 'Test-User',
+      name: 'The Test User',
       email: 'snekman@snek.at'
     }
   }

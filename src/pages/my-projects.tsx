@@ -1,4 +1,5 @@
-import {PageProps} from 'gatsby'
+import {connectPage, Field} from '@jaenjs/jaen'
+import {graphql, PageProps} from 'gatsby'
 import React, {useState} from 'react'
 import NavbarPadding from '../components/Layout/NavbarPadding'
 import PageLayout from '../components/Layout/PageLayout'
@@ -8,7 +9,7 @@ import SystemDialog from '../components/SystemDialog/SystemDialog'
 import {AddExperimentDialogProps} from '../model/types/type.experiment'
 import ProjectExperimentDataContextProvider from '../providers/ProjectExperimentDataProvider'
 
-export default function MyProjectPage(props: PageProps) {
+export function MyProjectPage(props: PageProps) {
   // const [isAddProjectDialogOpen, setIsProjectDialogOpen] = useState(false); ---FOR RELEASE 1 NOT RELEVANT---
   const [addExperimentDialogProps, setAddExperimentDialogProps] =
     useState<AddExperimentDialogProps>({
@@ -21,7 +22,9 @@ export default function MyProjectPage(props: PageProps) {
       <NavbarPadding />
       <SectionHeader
         withVerticalSpacing
-        header={'My Experiments'}
+        header={
+          <Field.Text name="sectionHeader" defaultValue={'My Experiments'} />
+        }
         onClick={() =>
           setAddExperimentDialogProps(prev => ({...prev, open: true}))
         }
@@ -53,3 +56,11 @@ export default function MyProjectPage(props: PageProps) {
     </PageLayout>
   )
 }
+
+export const query = graphql`
+  query ($jaenPageId: String!) {
+    ...JaenPageQuery
+  }
+`
+
+export default connectPage(MyProjectPage, {displayName: 'MyProjectPage'})
