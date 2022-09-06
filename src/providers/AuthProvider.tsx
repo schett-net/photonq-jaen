@@ -1,4 +1,5 @@
 import {CircularProgress} from '@mui/material'
+import {navigate} from 'gatsby'
 import React, {createContext, ReactNode, useState} from 'react'
 import {getPrivateRoutes} from '../model/model.routes'
 import {OptionalBaseProviderType} from '../model/types/type.provider'
@@ -22,6 +23,7 @@ export default function AuthProvider({path, children}: AuthProviderProps) {
       return user ? JSON.parse(user) : undefined
     }
   })
+  const [loading, setLoading] = useState(false)
 
   React.useEffect(() => {
     if (user) {
@@ -29,12 +31,22 @@ export default function AuthProvider({path, children}: AuthProviderProps) {
     } else {
       localStorage.removeItem('user')
     }
+
+    setLoading(false)
   }, [user])
+
+  React.useEffect(() => {
+    if (!loading && !user) {
+      navigate('/login')
+    }
+  }, [loading, user])
 
   if (isBrowser) {
     if (
-      !user &&
-      getPrivateRoutes().some(route => route.href === window.location.pathname)
+      getPrivateRoutes().some(
+        route => route.href === window.location.pathname
+      ) &&
+      loading
     ) {
       return (
         <div className={'w-screen h-screen flex justify-center items-center'}>

@@ -1,7 +1,7 @@
-import {connectTemplate} from '@jaenjs/jaen'
-import {graphql} from 'gatsby'
+import { connectTemplate } from '@jaenjs/jaen'
+import { graphql } from 'gatsby'
 
-import {IndexPage} from '../pages/index'
+import { IndexPage } from '../pages/index'
 
 export const query = graphql`
   query ($jaenPageId: String!) {
@@ -11,6 +11,6 @@ export const query = graphql`
 
 export default connectTemplate(IndexPage, {
   displayName: 'Index',
-  children: ['HowToGuides', 'Legal', 'Login', 'Impressum', 'Register'],
+  children: ['HowToGuides', 'Legal', 'Login', 'Impressum', 'Register', 'Profile'],
   isRootTemplate: true
 })

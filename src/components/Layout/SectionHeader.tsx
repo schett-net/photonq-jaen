@@ -1,14 +1,14 @@
-import React from "react";
-import { Button, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import clsx from "clsx";
+import {Button, Typography} from '@mui/material'
+import clsx from 'clsx'
+import React from 'react'
+import {useTranslation} from 'react-i18next'
 
 interface SectionHeaderProps {
-  header: string;
-  withButton?: boolean;
-  buttonText?: string;
-  onClick?: () => void;
-  withVerticalSpacing?: boolean;
+  header: JSX.Element
+  withButton?: boolean
+  buttonText?: string
+  onClick?: () => void
+  withVerticalSpacing?: boolean
 }
 
 export default function SectionHeader({
@@ -16,23 +16,22 @@ export default function SectionHeader({
   withButton,
   onClick,
   buttonText,
-  withVerticalSpacing,
+  withVerticalSpacing
 }: SectionHeaderProps) {
-  const { t } = useTranslation();
+  const {t} = useTranslation()
   return (
     <div
-      className={clsx("flex justify-between", {
-        "py-16": withVerticalSpacing,
-      })}
-    >
-      <Typography variant={"h4"} component={"h1"} fontWeight={"bold"}>
-        {t(header)}
+      className={clsx('flex justify-between', {
+        'py-16': withVerticalSpacing
+      })}>
+      <Typography variant={'h4'} component={'h1'} fontWeight={'bold'}>
+        {header}
       </Typography>
       {withButton && (
-        <Button variant={"contained"} onClick={onClick}>
+        <Button variant={'contained'} onClick={onClick}>
           {t(buttonText!)}
         </Button>
       )}
     </div>
-  );
+  )
 }
