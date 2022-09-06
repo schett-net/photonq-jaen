@@ -1,4 +1,5 @@
 import {connectPage, Field} from '@jaenjs/jaen'
+import {Container} from '@mui/system'
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 import ContentContainer from '../components/Layout/ContentContainer'
@@ -10,14 +11,19 @@ import ProfileDetailSection from '../components/Profile/Sections/ProfileDetailSe
 export function ProfilePage(props: PageProps) {
   return (
     <PageLayout pathname={props.path}>
-      <NavbarPadding />
-      <SectionHeader
-        header={<Field.Text name="sectionHeader" defaultValue={'My Profile'} />}
-        withVerticalSpacing
-      />
-      <ContentContainer>
-        <ProfileDetailSection />
-      </ContentContainer>
+      <Container maxWidth="xl">
+        <NavbarPadding />
+        <SectionHeader
+          header={
+            <Field.Text name="sectionHeader" defaultValue={'My Profile'} />
+          }
+          withVerticalSpacing
+        />
+        <ContentContainer>
+          <ProfileDetailSection />
+        </ContentContainer>
+        <NavbarPadding />
+      </Container>
     </PageLayout>
   )
 }
