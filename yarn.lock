@@ -3081,10 +3081,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jaenjs/jaen@^3.0.0-beta.85":
-  version "3.0.0-beta.85"
-  resolved "https://registry.yarnpkg.com/@jaenjs/jaen/-/jaen-3.0.0-beta.85.tgz#8b7e402a93137f340d6544509d3132a6e52f4260"
-  integrity sha512-AVLB4BKf8FQYYhBC1SkmaT37pt5Iiz04S6i4FooLEYfQpBM6J4hLnQaLJfP2mlqzC72KUmGMXcw9Pw00MmcfMw==
+"@jaenjs/jaen@^3.0.0-beta.87":
+  version "3.0.0-beta.87"
+  resolved "https://registry.yarnpkg.com/@jaenjs/jaen/-/jaen-3.0.0-beta.87.tgz#beb16c83092d174cb719b7ccde5bf061f4ecce09"
+  integrity sha512-fBodnE+nhKck5i4hND6Lz+/PuX2xHLQTGWohigtaHQFAGWb7Ls8r44O3wDNNcXNWyJUjqESD0RRvgOMN42FthA==
   dependencies:
     "@atlaskit/tree" "^8.4.0"
     "@chakra-ui/react" "^2.2.8"
