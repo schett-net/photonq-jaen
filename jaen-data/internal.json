@@ -1,7 +1,16 @@
 {
   "site": {
     "siteMetadata": {
-      "title": "My gatsby site"
+      "title": "PhotonQ - Photonic Quantum Computing",
+      "siteUrl": "https://photonq.at",
+      "description": "",
+      "author": {
+        "name": ""
+      },
+      "organization": {
+        "name": "",
+        "url": ""
+      }
     }
   },
   "migrationHistory": [
@@ -36,7 +45,15 @@
     {
       "createdAt": "2022-09-08T10:30:17.234Z",
       "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAISJmMZxAdX7ShWRdQGUbNwnbqReqmqAALjDAAClLDRUA6yLwrEzPeeKQQ"
+    },
+    {
+      "createdAt": "2022-09-12T14:59:15.516Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAISMGMfSTJj0VCje_w2gWE-a-fWMAENAAJ6DQACe-YBUdAmLGOHPA_dKQQ"
+    },
+    {
+      "createdAt": "2022-09-12T15:40:30.689Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAISPWMfUuK7hI6S7MRmCNhigr2qqfvJAAKKDQACe-YBUTcMKzQrV5eGKQQ"
     }
   ],
-  "finderUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAISJWMZxAfIR15plvcH8RPRFFW74Bo7AALiDAAClLDRUKRoWoiu7TSkKQQ"
+  "finderUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAISPGMfUuIWsncGvwa5vZeWCHNOq8QYAAKJDQACe-YBUZGjFlo833qlKQQ"
 }
