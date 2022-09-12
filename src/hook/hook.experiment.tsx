@@ -21,7 +21,7 @@ export function useSelectedExperiment(id: string | 'new') {
 
   const getData = async () => {
     try {
-      const res = await getExperiment(id, user!.token)
+      const res = await getExperiment(id)
       const {experiment: temp, result} =
         convertExperimentResoultionToFrontendObject(res)
       setExperiment(prev => ({

@@ -47,7 +47,7 @@ export default function HomeHero() {
               'mt-10 space-y-2 flex flex-col justify-center md:flex-row md:space-y-0'
             }>
             <Button
-              onClick={() => navigate('/register')}
+              onClick={() => navigate('/signup')}
               className={'relative z-50'}
               variant={'contained'}
               size={'large'}>

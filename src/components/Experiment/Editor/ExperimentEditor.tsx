@@ -88,8 +88,7 @@ function ExperimentEditor({
           projectId: kexperiment.projectId,
           maxRuntime: kexperiment.maxRuntime,
           ComputeSettings: kexperiment.ComputeSettings
-        },
-        user!.token
+        }
       )
       navigate(`?id=${res.experimentId}?type=result`)
     } catch (e) {

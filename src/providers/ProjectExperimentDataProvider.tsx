@@ -38,7 +38,7 @@ export default function ProjectExperimentDataContextProvider({
 
   const getData = async () => {
     try {
-      const res = await getExperiments(user!.token)
+      const res = await getExperiments()
       setExperiments(
         res.map(e => convertExperimentResoultionToFrontendObject(e).experiment)
       )

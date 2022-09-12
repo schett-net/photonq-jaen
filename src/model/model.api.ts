@@ -1,4 +1,4 @@
-import {login, logout, jsonFetch} from '@snek-functions/origin'
+import {jsonFetch, login, logout, signup} from '@snek-functions/origin'
 
 import {
   BaseApiFetchPayload,
@@ -7,11 +7,7 @@ import {
   GetExperimentResponse,
   Method
 } from './types/type.api'
-import {
-  LoginCredentials,
-  LoginResponse,
-  RegisterCredentials
-} from './types/type.auth'
+import {LoginCredentials, RegisterCredentials} from './types/type.auth'
 import {
   CreateExperimentPayload,
   ExperimentResolution
@@ -28,8 +24,7 @@ async function baseApiFetch<T>({
   params,
   method,
   endpoint,
-  body,
-  token
+  body
 }: BaseApiFetchPayload<T>) {
   const url = `${BASE_ENDPOINT_URL}${endpoint}${params ? '/' + params : ''}`
   const init = {
@@ -42,91 +37,80 @@ async function baseApiFetch<T>({
     body: JSON.stringify(body)
   }
 
-  //return jsonFetch([url, init])
+  const response = await jsonFetch([url, JSON.stringify(init)])
 
-  return fetch(`${BASE_ENDPOINT_URL}${endpoint}${params ? '/' + params : ''}`)
+  console.log('response', response)
+
+  return response
+
+  // return fetch(`${BASE_ENDPOINT_URL}${endpoint}${params ? '/' + params : ''}`)
 }
 
 /**
  *
  * @param id
- * @param token
  */
 export async function getExperiment(
-  id: string,
-  token: string
+  id: string
 ): Promise<GetExperimentResponse> {
   const response = await baseApiFetch({
     method: Method.GET,
     params: id,
-    endpoint: Endpoint.Experiment,
-    token
+    endpoint: Endpoint.Experiment
   })
   if (!response.ok) throw new Error('Could not get Experiment ' + id)
-  return response.json()
+  return response.json
 }
 
 /**
  *
  * @param id
- * @param token
  */
-export async function getExperimentResult(
-  id: string,
-  token: string
-): Promise<any> {
+export async function getExperimentResult(id: string): Promise<any> {
   const response = await baseApiFetch({
     method: Method.GET,
     params: `${id}/results`,
-    endpoint: Endpoint.Experiment,
-    token
+    endpoint: Endpoint.Experiment
   })
   if (!response.ok)
     throw new Error('Could not get full Experiment results' + id)
-  return response.json()
+  return response.json
 }
 
 /**
  *
  */
-export async function getExperiments(
-  token: string
-): Promise<ExperimentResolution[]> {
+export async function getExperiments(): Promise<ExperimentResolution[]> {
   const response = await baseApiFetch({
     method: Method.GET,
-    endpoint: Endpoint.Experiments,
-    token
+    endpoint: Endpoint.Experiments
   })
   if (!response.ok) throw new Error('Could not get Experiments')
-  return response.json()
+  return response.json
 }
 
 /**
  *
  * @param id
  * @param newExperiment
- * @param token
  */
 export async function updateExperiment(
   id: string,
-  newExperiment: CreateExperimentPayload,
-  token: string
+  newExperiment: CreateExperimentPayload
 ): Promise<ExperimentResolution> {
-  await deleteExperiment(id, token)
-  return createExperiment(newExperiment, token)
+  await deleteExperiment(id)
+  return createExperiment(newExperiment)
 }
 
 /**
  *
  * @param id
- * @param token
  */
-export async function deleteExperiment(id: string, token: string) {
+export async function deleteExperiment(id: string) {
   const response = await baseApiFetch({
     method: Method.DELETE,
     params: id,
-    endpoint: Endpoint.Experiment,
-    token
+    endpoint: Endpoint.Experiment
   })
   if (!response.ok) throw new Error('Could not delete Experiment: ' + id)
   return response
@@ -135,22 +119,19 @@ export async function deleteExperiment(id: string, token: string) {
 /**
  *
  * @param experimentPayload
- * @param token
  */
 export async function createExperiment(
-  experimentPayload: CreateExperimentPayload,
-  token: string
+  experimentPayload: CreateExperimentPayload
 ): Promise<ExperimentResolution> {
   const response = await baseApiFetch<CreateExperimentPayload>({
     method: Method.POST,
     endpoint: Endpoint.Experiment,
-    body: experimentPayload,
-    token
+    body: experimentPayload
   })
   if (!response.ok) {
     throw new Error('Could not create Experiment: ' + experimentPayload)
   }
-  return response.json()
+  return response.json
 }
 
 /**
@@ -159,22 +140,11 @@ export async function createExperiment(
  */
 export async function loginWthUserNameAndPassword(
   credentials: LoginCredentials
-): Promise<LoginResponse> {
-  const {data, errors} = await login.execute({
-    username: 'cis.co',
+) {
+  await login({
+    username: credentials.username,
     password: credentials.password
   })
-
-  if (errors.length > 0) throw new Error(errors[0].message)
-
-  return {
-    user: {
-      id: '1234',
-      username: 'Test-User',
-      name: 'The Test User',
-      email: 'snekman@snek.at'
-    }
-  }
 }
 
 export async function logoutUser() {
@@ -185,20 +155,10 @@ export async function logoutUser() {
  *
  * @param credentials
  */
-export async function register(
-  credentials: RegisterCredentials
-): Promise<LoginResponse> {
-  const response = await baseApiFetch({
-    method: Method.POST,
-    endpoint: Endpoint.Register,
-    body: credentials
+export async function register(credentials: RegisterCredentials) {
+  await signup({
+    email: credentials.email,
+    password: credentials.password,
+    details: {firstName: credentials.firstName, lastName: credentials.lastName}
   })
-  if (!(response.status === 200 || response.status === 201)) {
-    if (response.status === 400) {
-      throw new Error('User with this email already exists.')
-    } else {
-      throw new Error('Authorization data missing or invalid.')
-    }
-  }
-  return response.json()
 }
