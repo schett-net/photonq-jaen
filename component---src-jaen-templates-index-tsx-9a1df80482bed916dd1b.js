@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_gatsby_site=self.webpackChunkmy_gatsby_site||[]).push([[824],{44494:function(e,s,t){t.r(s);var a=t(64731),i=t(29104);s.default=(0,a.connectTemplate)(i.IndexPage,{displayName:"Index",children:["HowToGuides","Legal","Login","Impressum","Register","Profile"],isRootTemplate:!0})}}]);
+//# sourceMappingURL=component---src-jaen-templates-index-tsx-9a1df80482bed916dd1b.js.map
