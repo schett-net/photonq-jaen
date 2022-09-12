@@ -68,7 +68,7 @@ export default function ActionCell({
           setExperiments((prev) =>
             prev.filter((e) => e.experimentId !== row.original.experimentId)
           );
-          await deleteExperiment(row.original.experimentId, user!.token);
+          await deleteExperiment(row.original.experimentId);
         },
       },
       // Not relevant for release 1

@@ -57,7 +57,8 @@ export default function RegisterForm() {
     if (validateFormValues(errorObject)) {
       setIsLoading(true)
       const registerCredentials: RegisterCredentials = {
-        name: `${registerValues.firstName} ${registerValues.secondName}`,
+        firstName: registerValues.firstName,
+        lastName: registerValues.secondName,
         email: registerValues.email,
         password: registerValues.password
       }
@@ -65,6 +66,7 @@ export default function RegisterForm() {
         await register(registerCredentials)
         setError('')
       } catch (e: any) {
+        console.error(e)
         setError(e.message)
       } finally {
         setSubmit(true)

@@ -1,6 +1,6 @@
 export enum Path {
   Login = '/login',
-  Register = '/register',
+  Register = '/signup',
   Profile = '/profile',
   MyProjects = '/my-projects',
   SingleExperiment = '/experiment/:id',

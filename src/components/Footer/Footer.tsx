@@ -1,5 +1,5 @@
-import { navigate } from '@jaenjs/jaen'
-import { Link } from '@mui/material'
+import {navigate} from '@jaenjs/jaen'
+import {Link} from '@mui/material'
 import clsx from 'clsx'
 import React from 'react'
 import MaxWidthContainer from '../Layout/MaxWidthContainer'
@@ -30,7 +30,7 @@ export default function Footer({alwaysAtBottom}: FooterProps) {
                 </a>
                 <a
                   className="cursor-pointer"
-                  onClick={() => navigate('/register')}>
+                  onClick={() => navigate('/signup')}>
                   Sign up
                 </a>
               </div>

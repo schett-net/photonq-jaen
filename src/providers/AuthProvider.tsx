@@ -1,5 +1,4 @@
 import {CircularProgress} from '@mui/material'
-import {navigate} from 'gatsby'
 import React, {createContext, ReactNode, useState} from 'react'
 import {getPrivateRoutes} from '../model/model.routes'
 import {OptionalBaseProviderType} from '../model/types/type.provider'
@@ -16,44 +15,54 @@ interface AuthProviderProps {
 
 const isBrowser = typeof window !== 'undefined'
 
+const privateRoutes = getPrivateRoutes()
+
 export default function AuthProvider({path, children}: AuthProviderProps) {
-  const [user, setUser] = useState<User | undefined>(() => {
-    if (isBrowser) {
-      const user = localStorage.getItem('user')
-      return user ? JSON.parse(user) : undefined
-    }
-  })
+  const [user, setUser] = useState<User | undefined>()
   const [loading, setLoading] = useState(false)
 
   React.useEffect(() => {
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user))
-    } else {
-      localStorage.removeItem('user')
-    }
+    let lastCookie = ''
 
-    setLoading(false)
-  }, [user])
+    const interval = setInterval(() => {
+      if (lastCookie !== document.cookie) {
+        const userCoco = document.cookie
+          .split('; ')
+          .find(row => row.startsWith('U='))
+        if (userCoco) {
+          const urlEncoded = userCoco.split('=')[1]
+          const decoded = decodeURIComponent(urlEncoded)
 
-  React.useEffect(() => {
-    if (!loading && !user) {
-      navigate('/login')
-    }
-  }, [loading, user])
+          console.log('decoded', decoded)
 
-  if (isBrowser) {
-    if (
-      getPrivateRoutes().some(
-        route => route.href === window.location.pathname
-      ) &&
-      loading
-    ) {
-      return (
-        <div className={'w-screen h-screen flex justify-center items-center relative'}>
-          <CircularProgress size={50} />
-        </div>
-      )
-    }
+          const user = JSON.parse(decoded)
+          setUser(user)
+          setLoading(false)
+        }
+
+        lastCookie = document.cookie
+      }
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const isOnPrivateRoute = (() => {
+    if (!isBrowser) return false
+
+    return privateRoutes.some(route => route.href === window.location.pathname)
+  })()
+
+  if (loading && isOnPrivateRoute) {
+    return (
+      <div
+        className={
+          'w-screen h-screen flex justify-center items-center relative'
+        }>
+        <CircularProgress size={50} />
+      </div>
+    )
+  } else if (isOnPrivateRoute && !user) {
+    return <>Access denied</>
   }
 
   return (

@@ -6,7 +6,7 @@ export enum Endpoint {
   Experiment = '/experiments',
   Experiments = '/experiments',
   Login = '/login',
-  Register = '/register'
+  Register = '/signup'
 }
 
 export enum Method {

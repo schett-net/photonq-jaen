@@ -33,11 +33,10 @@ export default function LoginForm() {
     e.preventDefault()
     setIsLoading(true)
     try {
-      const response = await loginWthUserNameAndPassword({
+       await loginWthUserNameAndPassword({
         username: loginValues.username,
         password: loginValues.password
       })
-      setUser(response.user)
       setError('')
       navigate(Path.MyProjects)
     } catch (e) {
