@@ -7,9 +7,12 @@ import {
   TextField
 } from '@mui/material'
 import {red} from '@mui/material/colors'
+import {useLocation} from '@reach/router'
+
 import {Link, navigate} from 'gatsby'
 import React, {useState} from 'react'
 import {useTranslation} from 'react-i18next'
+import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
 import {usePasswordStrength} from '../../hook/hook.password'
 import {register} from '../../model/model.api'
 import {Path} from '../../model/model.routes'
@@ -41,12 +44,14 @@ export default function RegisterForm() {
 
   const errorObject = usePasswordStrength({value: registerValues.password})
 
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
   React.useEffect(() => {
     if (submit == true) {
       if (error.length === 0) {
         setToastOpen(true)
         setTimeout(() => {
-          navigate(Path.Login)
+          navigate(getLangRootNavigationPath(location?.pathname, Path.Login))
         }, 1500) // this value determines the duration of the toast pop up
       }
     }

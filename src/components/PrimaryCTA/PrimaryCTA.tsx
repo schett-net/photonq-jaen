@@ -1,8 +1,13 @@
-import {Field, navigate} from '@jaenjs/jaen'
+import {Field} from '@jaenjs/jaen'
+import {useLocation} from '@reach/router'
+
 import {Button} from '@mui/material'
 import React from 'react'
+import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
 
 export default function PrimaryCTA() {
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
   return (
     <div
       className={
@@ -23,7 +28,7 @@ export default function PrimaryCTA() {
       </div>
       <Button
         size={'large'}
-        onClick={() => navigate('/login')}
+        onClick={() => getLangRootNavigationPath(location?.pathname, '/login')}
         color={'secondary'}
         variant={'outlined'}>
         Start quantum computing

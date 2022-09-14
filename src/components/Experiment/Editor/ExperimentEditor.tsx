@@ -2,12 +2,13 @@ import {CircularProgress} from '@mui/material'
 import {navigate} from 'gatsby'
 import React, {useMemo, useState} from 'react'
 
+import {useLocation} from '@reach/router'
 import {useTranslation} from 'react-i18next'
+
 import {
   CircuitConfig,
   circuitConfigs
 } from '../../../circuitConfig/circuits4Dv004'
-import {useConnectedUser} from '../../../hook/hook.user'
 import {createExperiment} from '../../../model/model.api'
 import {ExperimentState} from '../../../model/types/type.experiment'
 import {BaseEditorPageProps} from '../../../pages/experiment'
@@ -64,7 +65,6 @@ function ExperimentEditor({
 }: ExperimentEditorProps) {
   const [error, setError] = useState(false)
   const {t} = useTranslation()
-  const user = useConnectedUser()
 
   const {id} = getSearchParams<{id: string}>()
 
@@ -74,6 +74,8 @@ function ExperimentEditor({
   )
   const inputsDisabled = useMemo<boolean>(() => id !== 'new', [id])
 
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
   const runExperiment = async () => {
     try {
       const kexperiment = prepareExperiment(experiment, [
@@ -81,15 +83,13 @@ function ExperimentEditor({
         'withQubitConfig',
         'config'
       ])
-      const res = await createExperiment(
-        {
-          circuitId: kexperiment.circuitId,
-          experimentName: kexperiment.experimentName,
-          projectId: kexperiment.projectId,
-          maxRuntime: kexperiment.maxRuntime,
-          ComputeSettings: kexperiment.ComputeSettings
-        }
-      )
+      const res = await createExperiment({
+        circuitId: kexperiment.circuitId,
+        experimentName: kexperiment.experimentName,
+        projectId: kexperiment.projectId,
+        maxRuntime: kexperiment.maxRuntime,
+        ComputeSettings: kexperiment.ComputeSettings
+      })
       navigate(`?id=${res.experimentId}?type=result`)
     } catch (e) {
       console.error(e)

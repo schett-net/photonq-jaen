@@ -18,9 +18,7 @@ export function HowToGuidesPage(props: PageProps) {
     filteredGuides,
     isLoading,
     withJaenPage
-  } = useGuideFilter({
-    jaenPageId: 'JaenPage /how-to-guides/'
-  })
+  } = useGuideFilter({})
 
   return (
     <PageLayout pathname={props.path}>

@@ -41,15 +41,18 @@ export function getPrivateRoutes() {
     },
     {
       href: Path.MyProjects,
-      label: 'My Experiments'
+      label: 'My Experiments',
+      languageSpecific: false
     },
     {
       href: Path.SingleExperiment,
-      label: 'Experiment'
+      label: 'Experiment',
+      languageSpecific: false
     },
     {
       href: Path.ExperimentResult,
-      label: 'Result'
+      label: 'Result',
+      languageSpecific: false
     }
   ]
 }
@@ -72,7 +75,8 @@ export function getLoggedInNavbarRoutes() {
     },
     {
       href: Path.MyProjects,
-      label: 'My Experiments'
+      label: 'My Experiments',
+      languageSpecific: false
     },
     {
       href: Path.HowToGuides,

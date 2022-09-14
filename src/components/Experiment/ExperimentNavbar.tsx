@@ -1,6 +1,8 @@
+import {useLocation} from '@reach/router'
 import clsx from 'clsx'
 import React, {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
+import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
 
 import {Path} from '../../model/model.routes'
 import {ExperimentState} from '../../model/types/type.experiment'
@@ -28,6 +30,8 @@ export default function ExperimentNavbar({
   const type = getSearchParams()['type']
   const name = getSearchParams()['name']
 
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
   const isResult = useMemo(() => type === 'result', [type])
 
   return (
@@ -37,7 +41,11 @@ export default function ExperimentNavbar({
           <div className={'flex items-center space-x-4 justify-self-start'}>
             <img
               className={'cursor-pointer'}
-              onClick={() => navigate(Path.MyProjects)}
+              onClick={() =>
+                navigate(
+                  getLangRootNavigationPath(location?.pathname, Path.MyProjects)
+                )
+              }
               src="/images/logo-white.png"
               alt="Logo of the university of vienna"
             />

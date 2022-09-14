@@ -1,6 +1,7 @@
 import {navigate} from '@jaenjs/jaen'
 import clsx from 'clsx'
 import React, {useContext, useMemo, useState} from 'react'
+import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
 import {
   getLoggedInNavbarRoutes,
   getLoggedOutNavbarRoutes
@@ -41,7 +42,7 @@ export default function Navbar({pathname}: {pathname: string}) {
             'max-w-max bg-white w-full flex justify-between items-center py-4 px-8 '
           }>
           <div
-            onClick={() => navigate('/')}
+            onClick={() => navigate(getLangRootNavigationPath(pathname, '/'))}
             className={
               'w-40 cursor-pointer z-40 flex items-center space-x-8 divide-x'
             }>

@@ -1,7 +1,9 @@
 import {navigate} from '@jaenjs/jaen'
 import {Link} from '@mui/material'
+import {useLocation} from '@reach/router'
 import clsx from 'clsx'
 import React from 'react'
+import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
 import MaxWidthContainer from '../Layout/MaxWidthContainer'
 
 interface FooterProps {
@@ -9,6 +11,8 @@ interface FooterProps {
 }
 
 export default function Footer({alwaysAtBottom}: FooterProps) {
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
   return (
     <footer
       className={clsx('flex justify-center py-10 px-8 md:px-16', {
@@ -20,34 +24,64 @@ export default function Footer({alwaysAtBottom}: FooterProps) {
             <p className={'font-bold'}>Links</p>
             <div className="flex space-x-14">
               <div className="flex flex-col space-y-4 mt-3">
-                <a onClick={() => navigate('/')} className="cursor-pointer">
+                <a
+                  onClick={() =>
+                    navigate(getLangRootNavigationPath(location?.pathname, '/'))
+                  }
+                  className="cursor-pointer">
                   Home
                 </a>
                 <a
                   className="cursor-pointer"
-                  onClick={() => navigate('/login')}>
+                  onClick={() =>
+                    navigate(
+                      getLangRootNavigationPath(location?.pathname, '/login')
+                    )
+                  }>
                   Sign in
                 </a>
                 <a
                   className="cursor-pointer"
-                  onClick={() => navigate('/signup')}>
+                  onClick={() =>
+                    navigate(
+                      getLangRootNavigationPath(location?.pathname, '/signup')
+                    )
+                  }>
                   Sign up
                 </a>
               </div>
               <div className="flex flex-col space-y-4 mt-3">
                 <a
                   className="cursor-pointer"
-                  onClick={() => navigate('/how-to-guides')}>
+                  onClick={() =>
+                    navigate(
+                      getLangRootNavigationPath(
+                        location?.pathname,
+                        '/how-to-guides'
+                      )
+                    )
+                  }>
                   Documentation
                 </a>
                 <a
                   className="cursor-pointer"
-                  onClick={() => navigate('/legal')}>
+                  onClick={() =>
+                    navigate(
+                      getLangRootNavigationPath(location?.pathname, '/legal')
+                    )
+                  }>
                   Terms & Conditions
                 </a>
                 <a
                   className="cursor-pointer"
-                  onClick={() => navigate('/impressum')}>
+                  onClick={() =>
+                    navigate(
+                      getLangRootNavigationPath(
+                        location?.pathname,
+                        '/impressum'
+                      )
+                    )
+                  }>
                   Impressum
                 </a>
               </div>

@@ -3,9 +3,10 @@ import {useEffect, useMemo, useState} from 'react'
 
 import {GuideCategory} from './GuideFilter'
 
-export function useGuideFilter(props: {jaenPageId?: string}) {
+export function useGuideFilter(props: {jaenPageId?: string; path?: string}) {
   const {children: guides, withJaenPage} = useJaenPageIndex({
     jaenPageId: props.jaenPageId,
+    path: props.path,
     filter: page => {
       console.log('page', page)
       return true

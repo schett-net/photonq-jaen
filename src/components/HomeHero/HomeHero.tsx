@@ -1,12 +1,17 @@
 import {Field, navigate} from '@jaenjs/jaen'
 import {Button} from '@mui/material'
+import {useLocation} from '@reach/router'
+
 import React from 'react'
 import SectionHeader from '../Section/SectionHeader'
 
+import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
 import NavbarPadding from '../Layout/NavbarPadding'
 import {BgFade} from './style'
 
 export default function HomeHero() {
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
   return (
     <div className="relative">
       <NavbarPadding />
@@ -47,7 +52,11 @@ export default function HomeHero() {
               'mt-10 space-y-2 flex flex-col justify-center md:flex-row md:space-y-0'
             }>
             <Button
-              onClick={() => navigate('/signup')}
+              onClick={() =>
+                navigate(
+                  getLangRootNavigationPath(location?.pathname, '/signup')
+                )
+              }
               className={'relative z-50'}
               variant={'contained'}
               size={'large'}>

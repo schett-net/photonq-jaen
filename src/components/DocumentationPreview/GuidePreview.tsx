@@ -1,5 +1,7 @@
 import {Field, navigate, useField} from '@jaenjs/jaen'
+import {useLocation} from '@reach/router'
 import React from 'react'
+import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
 
 function GuidePreview(props: {index: string; slug: string}) {
   const mainImage = useField('mainImage', 'IMA:ImageField')
@@ -12,10 +14,17 @@ function GuidePreview(props: {index: string; slug: string}) {
       'relative rounded filter drop-shadow-2xl transform hover:scale-105 duration-300 cursor-pointer w-full h-96'
   }
 
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
   if (!mainImage.isEditing) {
     divProps.role = 'link'
     divProps.onClick = () => {
-      navigate(`/${props.index}/${props.slug}`)
+      navigate(
+        getLangRootNavigationPath(
+          location?.pathname,
+          `/${props.index}/${props.slug}`
+        )
+      )
     }
   }
 
