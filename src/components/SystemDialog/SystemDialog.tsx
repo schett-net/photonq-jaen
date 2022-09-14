@@ -7,9 +7,11 @@ import {
   IconButton,
   TextField
 } from '@mui/material'
+import {useLocation} from '@reach/router'
 import {navigate} from 'gatsby'
 import React, {useState} from 'react'
 import {useTranslation} from 'react-i18next'
+
 import {ProjectExperimentDataProviderProps} from '../../providers/ProjectExperimentDataProvider'
 
 interface SystemDialogProps {
@@ -38,6 +40,8 @@ export default function SystemDialog({
   const {t} = useTranslation()
   const [input, setInput] = useState(defaultInput || '')
   const [errorMassage, setErrorMassage] = useState<string>()
+
+  const location = typeof window !== 'undefined' ? useLocation() : null
 
   const resetDialog = () => {
     setIsOpen(false)

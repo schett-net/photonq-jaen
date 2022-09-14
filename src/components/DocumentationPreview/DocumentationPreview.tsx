@@ -1,13 +1,31 @@
 import {Field, navigate} from '@jaenjs/jaen'
+
 import {Button} from '@mui/material'
+import {useLocation} from '@reach/router'
 import React from 'react'
+import {
+  checkLanguage,
+  getLangRootNavigationPath
+} from '../../common/getLangRootNavigationPath'
 import {useGuideFilter} from '../GuideFilter/hook.guideFilter'
 import GuidePreview from './GuidePreview'
 import {GuidePreviewGrid} from './GuidePreviewGrid'
 
 export default function DocumentationPreview() {
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
+  const jaenPagePath = React.useMemo(() => {
+    const lang = checkLanguage(location?.pathname)
+
+    if (lang) {
+      return `/${lang}/how-to-guides`
+    }
+
+    return `/how-to-guides`
+  }, [location?.pathname])
+
   const {filteredGuides, withJaenPage} = useGuideFilter({
-    jaenPageId: 'JaenPage /how-to-guides/'
+    path: jaenPagePath
   })
 
   return (
@@ -44,7 +62,11 @@ hardware.`}
       </GuidePreviewGrid>
       <div className={'pt-8'}>
         <Button
-          onClick={() => navigate('/how-to-guides')}
+          onClick={() =>
+            navigate(
+              getLangRootNavigationPath(location?.pathname, '/how-to-guides')
+            )
+          }
           variant={'contained'}
           size={'large'}>
           Read more

@@ -1647,6 +1647,11 @@ type JaenInternalFieldsEnum =
   | 'parent.parent.internal.type'
   | 'parent.parent.parent.children'
   | 'parent.parent.parent.id'
+  | 'site.siteMetadata.author.name'
+  | 'site.siteMetadata.description'
+  | 'site.siteMetadata.organization.name'
+  | 'site.siteMetadata.organization.url'
+  | 'site.siteMetadata.siteUrl'
   | 'site.siteMetadata.title';
 
 type JaenInternalFilterInput = {
@@ -1709,11 +1714,37 @@ type JaenInternalSiteFilterInput = {
 };
 
 type JaenInternalSiteSiteMetadata = {
+  readonly author: Maybe<JaenInternalSiteSiteMetadataAuthor>;
+  readonly description: Maybe<Scalars['String']>;
+  readonly organization: Maybe<JaenInternalSiteSiteMetadataOrganization>;
+  readonly siteUrl: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
 };
 
+type JaenInternalSiteSiteMetadataAuthor = {
+  readonly name: Maybe<Scalars['String']>;
+};
+
+type JaenInternalSiteSiteMetadataAuthorFilterInput = {
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+};
+
 type JaenInternalSiteSiteMetadataFilterInput = {
+  readonly author: InputMaybe<JaenInternalSiteSiteMetadataAuthorFilterInput>;
+  readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly organization: InputMaybe<JaenInternalSiteSiteMetadataOrganizationFilterInput>;
+  readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+};
+
+type JaenInternalSiteSiteMetadataOrganization = {
+  readonly name: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+};
+
+type JaenInternalSiteSiteMetadataOrganizationFilterInput = {
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
 };
 
 type JaenInternalSortInput = {
@@ -1928,6 +1959,7 @@ type JaenNotificationSortInput = {
 };
 
 type JaenPage = Node & {
+  readonly buildPath: Maybe<Scalars['String']>;
   /** Returns the first child node of type JaenPage or null if there are no children of given type on this node */
   readonly childJaenPage: Maybe<JaenPage>;
   readonly children: ReadonlyArray<Node>;
@@ -1993,6 +2025,10 @@ type JaenPageEdge = {
 };
 
 type JaenPageFieldsEnum =
+  | 'buildPath'
+  | 'childJaenPage.buildPath'
+  | 'childJaenPage.childJaenPage.buildPath'
+  | 'childJaenPage.childJaenPage.childJaenPage.buildPath'
   | 'childJaenPage.childJaenPage.childJaenPage.children'
   | 'childJaenPage.childJaenPage.childJaenPage.childrenJaenPage'
   | 'childJaenPage.childJaenPage.childJaenPage.componentName'
@@ -2005,6 +2041,7 @@ type JaenPageFieldsEnum =
   | 'childJaenPage.childJaenPage.childJaenPage.template'
   | 'childJaenPage.childJaenPage.children'
   | 'childJaenPage.childJaenPage.childrenJaenPage'
+  | 'childJaenPage.childJaenPage.childrenJaenPage.buildPath'
   | 'childJaenPage.childJaenPage.childrenJaenPage.children'
   | 'childJaenPage.childJaenPage.childrenJaenPage.childrenJaenPage'
   | 'childJaenPage.childJaenPage.childrenJaenPage.componentName'
@@ -2124,6 +2161,8 @@ type JaenPageFieldsEnum =
   | 'childJaenPage.childJaenPage.template'
   | 'childJaenPage.children'
   | 'childJaenPage.childrenJaenPage'
+  | 'childJaenPage.childrenJaenPage.buildPath'
+  | 'childJaenPage.childrenJaenPage.childJaenPage.buildPath'
   | 'childJaenPage.childrenJaenPage.childJaenPage.children'
   | 'childJaenPage.childrenJaenPage.childJaenPage.childrenJaenPage'
   | 'childJaenPage.childrenJaenPage.childJaenPage.componentName'
@@ -2136,6 +2175,7 @@ type JaenPageFieldsEnum =
   | 'childJaenPage.childrenJaenPage.childJaenPage.template'
   | 'childJaenPage.childrenJaenPage.children'
   | 'childJaenPage.childrenJaenPage.childrenJaenPage'
+  | 'childJaenPage.childrenJaenPage.childrenJaenPage.buildPath'
   | 'childJaenPage.childrenJaenPage.childrenJaenPage.children'
   | 'childJaenPage.childrenJaenPage.childrenJaenPage.childrenJaenPage'
   | 'childJaenPage.childrenJaenPage.childrenJaenPage.componentName'
@@ -2433,6 +2473,9 @@ type JaenPageFieldsEnum =
   | 'childJaenPage.template'
   | 'children'
   | 'childrenJaenPage'
+  | 'childrenJaenPage.buildPath'
+  | 'childrenJaenPage.childJaenPage.buildPath'
+  | 'childrenJaenPage.childJaenPage.childJaenPage.buildPath'
   | 'childrenJaenPage.childJaenPage.childJaenPage.children'
   | 'childrenJaenPage.childJaenPage.childJaenPage.childrenJaenPage'
   | 'childrenJaenPage.childJaenPage.childJaenPage.componentName'
@@ -2445,6 +2488,7 @@ type JaenPageFieldsEnum =
   | 'childrenJaenPage.childJaenPage.childJaenPage.template'
   | 'childrenJaenPage.childJaenPage.children'
   | 'childrenJaenPage.childJaenPage.childrenJaenPage'
+  | 'childrenJaenPage.childJaenPage.childrenJaenPage.buildPath'
   | 'childrenJaenPage.childJaenPage.childrenJaenPage.children'
   | 'childrenJaenPage.childJaenPage.childrenJaenPage.childrenJaenPage'
   | 'childrenJaenPage.childJaenPage.childrenJaenPage.componentName'
@@ -2564,6 +2608,8 @@ type JaenPageFieldsEnum =
   | 'childrenJaenPage.childJaenPage.template'
   | 'childrenJaenPage.children'
   | 'childrenJaenPage.childrenJaenPage'
+  | 'childrenJaenPage.childrenJaenPage.buildPath'
+  | 'childrenJaenPage.childrenJaenPage.childJaenPage.buildPath'
   | 'childrenJaenPage.childrenJaenPage.childJaenPage.children'
   | 'childrenJaenPage.childrenJaenPage.childJaenPage.childrenJaenPage'
   | 'childrenJaenPage.childrenJaenPage.childJaenPage.componentName'
@@ -2576,6 +2622,7 @@ type JaenPageFieldsEnum =
   | 'childrenJaenPage.childrenJaenPage.childJaenPage.template'
   | 'childrenJaenPage.childrenJaenPage.children'
   | 'childrenJaenPage.childrenJaenPage.childrenJaenPage'
+  | 'childrenJaenPage.childrenJaenPage.childrenJaenPage.buildPath'
   | 'childrenJaenPage.childrenJaenPage.childrenJaenPage.children'
   | 'childrenJaenPage.childrenJaenPage.childrenJaenPage.childrenJaenPage'
   | 'childrenJaenPage.childrenJaenPage.childrenJaenPage.componentName'
@@ -3411,6 +3458,7 @@ type JaenPageFieldsEnum =
   | 'template';
 
 type JaenPageFilterInput = {
+  readonly buildPath: InputMaybe<StringQueryOperatorInput>;
   readonly childJaenPage: InputMaybe<JaenPageFilterInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly childrenJaenPage: InputMaybe<JaenPageFilterListInput>;
@@ -3832,6 +3880,7 @@ type Query_jaenNotificationArgs = {
 
 
 type Query_jaenPageArgs = {
+  buildPath: InputMaybe<StringQueryOperatorInput>;
   childJaenPage: InputMaybe<JaenPageFilterInput>;
   children: InputMaybe<NodeFilterListInput>;
   childrenJaenPage: InputMaybe<JaenPageFilterListInput>;
@@ -5172,9 +5221,9 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
-type JaenPageDataFragment = { readonly id: string, readonly slug: string, readonly jaenFields: Record<string, unknown> | null, readonly jaenPageMetadata: { readonly title: string, readonly isBlogPost: boolean | null, readonly image: string | null, readonly description: string | null, readonly datePublished: string | null, readonly canonical: string | null }, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }> };
+type JaenPageDataFragment = { readonly id: string, readonly buildPath: string | null, readonly slug: string, readonly jaenFields: Record<string, unknown> | null, readonly jaenPageMetadata: { readonly title: string, readonly isBlogPost: boolean | null, readonly image: string | null, readonly description: string | null, readonly datePublished: string | null, readonly canonical: string | null }, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }> };
 
-type JaenPageQueryFragment = { readonly jaenPage: { readonly id: string, readonly slug: string, readonly jaenFields: Record<string, unknown> | null, readonly jaenPageMetadata: { readonly title: string, readonly isBlogPost: boolean | null, readonly image: string | null, readonly description: string | null, readonly datePublished: string | null, readonly canonical: string | null }, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }> } | null };
+type JaenPageQueryFragment = { readonly jaenPage: { readonly id: string, readonly buildPath: string | null, readonly slug: string, readonly jaenFields: Record<string, unknown> | null, readonly jaenPageMetadata: { readonly title: string, readonly isBlogPost: boolean | null, readonly image: string | null, readonly description: string | null, readonly datePublished: string | null, readonly canonical: string | null }, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null, readonly items: ReadonlyArray<{ readonly id: string, readonly type: string, readonly ptrPrev: string | null, readonly ptrNext: string | null, readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }>, readonly jaenFiles: ReadonlyArray<{ readonly id: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null> | null }> }> } | null };
 
 type JaenSectionFieldsFragment = { readonly fieldName: string, readonly ptrHead: string | null, readonly ptrTail: string | null };
 

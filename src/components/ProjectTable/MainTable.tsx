@@ -7,10 +7,12 @@ import {
   TableHead,
   TableRow
 } from '@mui/material'
-import { navigate } from 'gatsby'
+import {useLocation} from '@reach/router'
+import {navigate} from 'gatsby'
 import React, {useContext, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useExpanded, useSortBy, useTable} from 'react-table'
+
 import {getTableColumns} from '../../model/model.table'
 import {AddExperimentDialogProps} from '../../model/types/type.experiment'
 import {ProjectExperimentDataContext} from '../../providers/ProjectExperimentDataProvider'
@@ -33,6 +35,8 @@ export default function MainTable({
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [actions, setActions] = useState<any>()
+
+  const location = typeof window !== 'undefined' ? useLocation() : null
 
   const {getTableProps, getTableBodyProps, rows, prepareRow, columns} =
     useTable(

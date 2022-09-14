@@ -7,7 +7,7 @@ import ProfileContentContainer from '../ProfileContentContainer'
 import ProfileSection from '../ProfileSection'
 import ProfileSectionHeader from '../ProfileSectionHeader'
 
-const tableKeys: (keyof User)[] = ['name', 'email', 'username']
+const tableKeys: (keyof User)[] = ['firstName', 'lastName', 'email']
 
 export default function ProfileDetailSection() {
   const {t} = useTranslation()

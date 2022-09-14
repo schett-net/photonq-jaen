@@ -1,6 +1,7 @@
 import {Field} from '@jaenjs/jaen'
 import {TextField} from '@mui/material'
 import {red} from '@mui/material/colors'
+import {useLocation} from '@reach/router'
 import {Link, navigate} from 'gatsby'
 import React, {useContext, useState} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -22,6 +23,8 @@ export default function LoginForm() {
     password: ''
   })
 
+  const location = typeof window !== 'undefined' ? useLocation() : null
+
   const handleOnChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     key: keyof LoginCredentials
@@ -33,7 +36,7 @@ export default function LoginForm() {
     e.preventDefault()
     setIsLoading(true)
     try {
-       await loginWthUserNameAndPassword({
+      await loginWthUserNameAndPassword({
         username: loginValues.username,
         password: loginValues.password
       })
