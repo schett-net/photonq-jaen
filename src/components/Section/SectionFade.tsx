@@ -27,7 +27,7 @@ export default function SectionContent({header, content}: SectionContentProps) {
             <Field.Image
               name="image"
               objectFit="fill"
-              defaultValue={'https://photonq.at/images/quantenComputer.jpg'}
+              defaultValue={'https://i.ibb.co/MMCTqnq/quanten-Computer.jpg'}
               imgClassName="w-full h-auto image"
               className={'xl:w-6-12 flex justify-center items-center'}
             />
