@@ -1,9 +1,11 @@
 import {Field} from '@jaenjs/jaen'
 import {Typography} from '@mui/material'
 import React from 'react'
-import {useTranslation} from 'react-i18next'
 
-export default function AuthContent(props: {header: JSX.Element; content: JSX.Element}) {
+export default function AuthContent(props: {
+  header: JSX.Element
+  content: JSX.Element
+}) {
   return (
     <div
       className={
@@ -13,7 +15,9 @@ export default function AuthContent(props: {header: JSX.Element; content: JSX.El
         <Field.Image
           name="image"
           objectFit="contain"
-          defaultValue={'https://photonq.at/images/photons.svg'}
+          defaultValue={
+            'https://osg.snek.at/storage/BQACAgQAAxkDAAIS9GMkjpykzkAI-d9uBCSHWiLCC1ZEAALXDQAC_I8oUXvbY-9hfOIAASkE'
+          }
           alt="svg animation"
         />
       </div>

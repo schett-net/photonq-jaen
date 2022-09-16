@@ -1,12 +1,12 @@
-import {navigate} from '@jaenjs/jaen'
+import { navigate } from '@jaenjs/jaen'
 import clsx from 'clsx'
-import React, {useContext, useMemo, useState} from 'react'
-import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
+import React, { useContext, useMemo, useState } from 'react'
+import { getLangRootNavigationPath } from '../../common/getLangRootNavigationPath'
 import {
   getLoggedInNavbarRoutes,
   getLoggedOutNavbarRoutes
 } from '../../common/routes'
-import {AuthContext} from '../../providers/AuthProvider'
+import { AuthContext } from '../../providers/AuthProvider'
 import MenuLink from './MenuLink'
 import ToggleButton from './TogglButton'
 
@@ -47,13 +47,13 @@ export default function Navbar({pathname}: {pathname: string}) {
               'w-40 cursor-pointer z-40 flex items-center space-x-8 divide-x'
             }>
             <img
-              src="https://photonq.at/images/CDG_Logo.svg"
+              src="https://svgshare.com/i/mjN.svg"
               alt="Logo Christian Doppler Forschungsgesellschaft"
               style={{maxHeight: 60}}
             />
 
             <img
-              src="https://photonq.at/images/uni-wien-logo.svg"
+              src="https://svgshare.com/i/mjE.svg"
               alt="Logo Uni Wien"
               style={{maxHeight: 80}}
             />

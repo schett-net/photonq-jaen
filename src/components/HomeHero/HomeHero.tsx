@@ -21,9 +21,7 @@ export default function HomeHero() {
           <Field.Image
             name="heroImage"
             objectFit="contain"
-            defaultValue={
-              'https://photonq.at/images/getting-started-screen.png'
-            }
+            defaultValue={'https://i.ibb.co/J2dX4Cz/getting-started-screen.png'}
             imgClassName={'w-full h-auto relative z-10 mt-20 sm:mt-0'}
             alt={'Quantum Computing Webapp UI'}
           />
