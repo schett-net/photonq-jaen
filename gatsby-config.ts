@@ -15,7 +15,7 @@ const config: GatsbyConfig = {
     {
       resolve: '@jaenjs/jaen',
       options: {
-        jaenProjectId: 3
+        jaenProjectId: 5
       }
     },
     '@chakra-ui/gatsby-plugin',
