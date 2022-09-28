@@ -98,7 +98,7 @@ export function getLoggedOutNavbarRoutes() {
     },
     {
       href: Path.Login,
-      label: 'Sign in'
+      label: 'Log in'
     },
     {
       href: Path.Register,

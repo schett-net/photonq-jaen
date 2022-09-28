@@ -1,9 +1,9 @@
-import {navigate} from '@jaenjs/jaen'
-import {Link} from '@mui/material'
-import {useLocation} from '@reach/router'
+import { navigate } from '@jaenjs/jaen'
+import { Link } from '@mui/material'
+import { useLocation } from '@reach/router'
 import clsx from 'clsx'
 import React from 'react'
-import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
+import { getLangRootNavigationPath } from '../../common/getLangRootNavigationPath'
 import MaxWidthContainer from '../Layout/MaxWidthContainer'
 
 interface FooterProps {
@@ -38,7 +38,7 @@ export default function Footer({alwaysAtBottom}: FooterProps) {
                       getLangRootNavigationPath(location?.pathname, '/login')
                     )
                   }>
-                  Sign in
+                  Log in
                 </a>
                 <a
                   className="cursor-pointer"
