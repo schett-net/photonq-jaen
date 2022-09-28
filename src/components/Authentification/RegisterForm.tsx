@@ -1,22 +1,22 @@
-import {Field} from '@jaenjs/jaen'
+import { Field } from '@jaenjs/jaen'
 import {
-  Alert,
-  Checkbox,
-  FormControlLabel,
-  Snackbar,
-  TextField
+    Alert,
+    Checkbox,
+    FormControlLabel,
+    Snackbar,
+    TextField
 } from '@mui/material'
-import {red} from '@mui/material/colors'
-import {useLocation} from '@reach/router'
+import { red } from '@mui/material/colors'
+import { useLocation } from '@reach/router'
 
-import {Link, navigate} from 'gatsby'
-import React, {useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
-import {usePasswordStrength} from '../../hook/hook.password'
-import {register} from '../../model/model.api'
-import {Path} from '../../model/model.routes'
-import {RegisterCredentials} from '../../model/types/type.auth'
+import { Link, navigate } from 'gatsby'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { getLangRootNavigationPath } from '../../common/getLangRootNavigationPath'
+import { usePasswordStrength } from '../../hook/hook.password'
+import { register } from '../../model/model.api'
+import { Path } from '../../model/model.routes'
+import { RegisterCredentials } from '../../model/types/type.auth'
 import LoadingButton from '../LoadingButton'
 import AuthFormContainer from './AuthFormContainer'
 import PasswordField from './PasswordField'
@@ -155,7 +155,7 @@ export default function RegisterForm() {
                 className={
                   'cursor-pointer text-primary font-bold transform hover:-translate-y-1 duration-300'
                 }>
-                {t('Sign in')}
+                {t('Log in')}
               </p>
             </Link>
           </div>
