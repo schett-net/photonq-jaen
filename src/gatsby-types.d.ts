@@ -1967,7 +1967,6 @@ type JaenPage = Node & {
   readonly childrenJaenPage: Maybe<ReadonlyArray<Maybe<JaenPage>>>;
   readonly componentName: Maybe<Scalars['String']>;
   readonly excludedFromIndex: Maybe<Scalars['Boolean']>;
-  readonly fields: Maybe<JaenPageFields>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly jaenFields: Maybe<Scalars['JSON']>;
@@ -2025,10 +2024,6 @@ type JaenPageEdge = {
   readonly previous: Maybe<JaenPage>;
 };
 
-type JaenPageFields = {
-  readonly path: Maybe<Scalars['String']>;
-};
-
 type JaenPageFieldsEnum =
   | 'buildPath'
   | 'childJaenPage.buildPath'
@@ -2061,7 +2056,6 @@ type JaenPageFieldsEnum =
   | 'childJaenPage.childJaenPage.children.id'
   | 'childJaenPage.childJaenPage.componentName'
   | 'childJaenPage.childJaenPage.excludedFromIndex'
-  | 'childJaenPage.childJaenPage.fields.path'
   | 'childJaenPage.childJaenPage.id'
   | 'childJaenPage.childJaenPage.internal.content'
   | 'childJaenPage.childJaenPage.internal.contentDigest'
@@ -2196,7 +2190,6 @@ type JaenPageFieldsEnum =
   | 'childJaenPage.childrenJaenPage.children.id'
   | 'childJaenPage.childrenJaenPage.componentName'
   | 'childJaenPage.childrenJaenPage.excludedFromIndex'
-  | 'childJaenPage.childrenJaenPage.fields.path'
   | 'childJaenPage.childrenJaenPage.id'
   | 'childJaenPage.childrenJaenPage.internal.content'
   | 'childJaenPage.childrenJaenPage.internal.contentDigest'
@@ -2317,7 +2310,6 @@ type JaenPageFieldsEnum =
   | 'childJaenPage.children.parent.id'
   | 'childJaenPage.componentName'
   | 'childJaenPage.excludedFromIndex'
-  | 'childJaenPage.fields.path'
   | 'childJaenPage.id'
   | 'childJaenPage.internal.content'
   | 'childJaenPage.internal.contentDigest'
@@ -2511,7 +2503,6 @@ type JaenPageFieldsEnum =
   | 'childrenJaenPage.childJaenPage.children.id'
   | 'childrenJaenPage.childJaenPage.componentName'
   | 'childrenJaenPage.childJaenPage.excludedFromIndex'
-  | 'childrenJaenPage.childJaenPage.fields.path'
   | 'childrenJaenPage.childJaenPage.id'
   | 'childrenJaenPage.childJaenPage.internal.content'
   | 'childrenJaenPage.childJaenPage.internal.contentDigest'
@@ -2646,7 +2637,6 @@ type JaenPageFieldsEnum =
   | 'childrenJaenPage.childrenJaenPage.children.id'
   | 'childrenJaenPage.childrenJaenPage.componentName'
   | 'childrenJaenPage.childrenJaenPage.excludedFromIndex'
-  | 'childrenJaenPage.childrenJaenPage.fields.path'
   | 'childrenJaenPage.childrenJaenPage.id'
   | 'childrenJaenPage.childrenJaenPage.internal.content'
   | 'childrenJaenPage.childrenJaenPage.internal.contentDigest'
@@ -2767,7 +2757,6 @@ type JaenPageFieldsEnum =
   | 'childrenJaenPage.children.parent.id'
   | 'childrenJaenPage.componentName'
   | 'childrenJaenPage.excludedFromIndex'
-  | 'childrenJaenPage.fields.path'
   | 'childrenJaenPage.id'
   | 'childrenJaenPage.internal.content'
   | 'childrenJaenPage.internal.contentDigest'
@@ -2972,7 +2961,6 @@ type JaenPageFieldsEnum =
   | 'children.parent.parent.id'
   | 'componentName'
   | 'excludedFromIndex'
-  | 'fields.path'
   | 'id'
   | 'internal.content'
   | 'internal.contentDigest'
@@ -3469,10 +3457,6 @@ type JaenPageFieldsEnum =
   | 'slug'
   | 'template';
 
-type JaenPageFieldsFilterInput = {
-  readonly path: InputMaybe<StringQueryOperatorInput>;
-};
-
 type JaenPageFilterInput = {
   readonly buildPath: InputMaybe<StringQueryOperatorInput>;
   readonly childJaenPage: InputMaybe<JaenPageFilterInput>;
@@ -3480,7 +3464,6 @@ type JaenPageFilterInput = {
   readonly childrenJaenPage: InputMaybe<JaenPageFilterListInput>;
   readonly componentName: InputMaybe<StringQueryOperatorInput>;
   readonly excludedFromIndex: InputMaybe<BooleanQueryOperatorInput>;
-  readonly fields: InputMaybe<JaenPageFieldsFilterInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly jaenFields: InputMaybe<JSONQueryOperatorInput>;
@@ -3903,7 +3886,6 @@ type Query_jaenPageArgs = {
   childrenJaenPage: InputMaybe<JaenPageFilterListInput>;
   componentName: InputMaybe<StringQueryOperatorInput>;
   excludedFromIndex: InputMaybe<BooleanQueryOperatorInput>;
-  fields: InputMaybe<JaenPageFieldsFilterInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   jaenFields: InputMaybe<JSONQueryOperatorInput>;
