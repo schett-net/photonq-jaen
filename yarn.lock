@@ -4154,10 +4154,10 @@
   dependencies:
     "@snek-at/functions" "*"
 
-"@snek-functions/origin@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@snek-functions/origin/-/origin-0.0.13.tgz#7fe2ef8635378d88df1a4ee11189349f979c86a5"
-  integrity sha512-Te0MR67kVFLqWUo28MIhNr8q3jjZJuuMNSwQ8UqZAMcq+6NTAXOddtCYujuA9pmzptqTnEfdPcgz5SJOAMVykA==
+"@snek-functions/origin@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@snek-functions/origin/-/origin-0.0.16.tgz#e212cff3f3acb2b1615a79a50cd3421972efbcaf"
+  integrity sha512-iBLAsyndwXiddtERvnxd7ONvWHvCxfy09W3SQx2BP7xJgS/QQAERFtjOA0sqHwOcyhqo3knsmN1MaNj4y7+dMA==
   dependencies:
     "@snek-at/functions" "*"
     "@snek-functions/authentication" "*"
