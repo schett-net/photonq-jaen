@@ -31,7 +31,7 @@ export default function SectionContent({
             <Field.Image
               name="logo1"
               objectFit="contain"
-              defaultValue={'https://svgshare.com/i/mjE.svg'}
+              defaultValue={'https://photonq.at/assets/uni-wien-logo.svg'}
               alt="Logo Uni Wien"
               imgStyle={{maxWidth: maxWidthImage}}
             />
@@ -40,7 +40,7 @@ export default function SectionContent({
             <Field.Image
               name="logo2"
               objectFit="contain"
-              defaultValue={'https://svgshare.com/i/mjN.svg'}
+              defaultValue={'https://photonq.at/assets/CDL_Logo.svg'}
               alt="Logo Christian Doppler Forschungsgesellschaft"
               imgStyle={{maxWidth: maxWidthImage}}
             />

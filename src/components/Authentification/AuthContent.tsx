@@ -15,9 +15,7 @@ export default function AuthContent(props: {
         <Field.Image
           name="image"
           objectFit="contain"
-          defaultValue={
-            'https://osg.snek.at/storage/BQACAgQAAxkDAAIS9GMkjpykzkAI-d9uBCSHWiLCC1ZEAALXDQAC_I8oUXvbY-9hfOIAASkE'
-          }
+          defaultValue={'https://photonq.at/assets/photons.svg'}
           alt="svg animation"
         />
       </div>

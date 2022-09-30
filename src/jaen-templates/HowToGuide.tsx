@@ -65,9 +65,7 @@ function HowToTemplate(props: PageProps) {
               <Field.Image
                 name="mainImage"
                 objectFit="cover"
-                defaultValue={
-                  'https://s5.gifyu.com/images/ezgif.com-gif-maker-2-20c7b917fd235062a.gif'
-                }
+                defaultValue={'https://photonq.at/assets/photons.svg'}
                 alt="Divider Image"
               />
             }
