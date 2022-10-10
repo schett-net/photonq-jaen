@@ -1,4 +1,4 @@
-import {Field} from '@jaenjs/jaen'
+import {Field, navigate} from '@jaenjs/jaen'
 import {Alert, Snackbar, TextField} from '@mui/material'
 import {red} from '@mui/material/colors'
 import {Link} from 'gatsby'
@@ -91,23 +91,13 @@ export default function PasswordResetForm() {
           passwordResetValues.password ===
           passwordResetValues.passwordConfirmation
         ) {
-          const res = await fetch(
-            `https://photonq.at/submit?token=${resetToken}`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                password: passwordResetValues.password
-              })
-            }
-          )
+          await resetPassword({
+            password: passwordResetValues.password,
+            token: resetToken
+          })
 
-          // If the response is not a redirect, something went wrong.
-          if (!res.redirected) {
-            throw new Error('Something went wrong')
-          }
+          // Redirect to the login page
+          navigate(Path.Login)
         } else {
           throw new Error('Passwords do not match')
         }
