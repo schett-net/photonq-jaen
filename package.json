@@ -29,7 +29,7 @@
     "@material-ui/utils": "^4.11.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
-    "@snek-functions/origin": "^0.0.16",
+    "@snek-functions/origin": "^0.0.19",
     "@tailwindcss/typography": "^0.5.4",
     "@types/react-helmet": "^6.1.5",
     "framer-motion": "^4",
