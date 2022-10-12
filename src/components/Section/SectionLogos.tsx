@@ -40,7 +40,7 @@ export default function SectionContent({
             <Field.Image
               name="logo2"
               objectFit="contain"
-              defaultValue={'https://photonq.at/assets/CDL_Logo.svg'}
+              defaultValue={'https://photonq.at/assets/CDG_Logo.svg'}
               alt="Logo Christian Doppler Forschungsgesellschaft"
               imgStyle={{maxWidth: maxWidthImage}}
             />
