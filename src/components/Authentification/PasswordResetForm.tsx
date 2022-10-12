@@ -173,9 +173,7 @@ export default function PasswordResetForm() {
               'flex space-x-5 underline cursor-pointer text-primary duration-300'
             }>
             <Link to={Path.Login}>
-              <p className="transform hover:-translate-y-1">
-                {t('Back to login')}
-              </p>
+              <p>{t('Back to login')}</p>
             </Link>
           </div>
         </div>

@@ -1,10 +1,10 @@
 import { Field } from '@jaenjs/jaen'
 import {
-    Alert,
-    Checkbox,
-    FormControlLabel,
-    Snackbar,
-    TextField
+  Alert,
+  Checkbox,
+  FormControlLabel,
+  Snackbar,
+  TextField
 } from '@mui/material'
 import { red } from '@mui/material/colors'
 import { useLocation } from '@reach/router'
@@ -153,7 +153,7 @@ export default function RegisterForm() {
             <Link to={Path.Login}>
               <p
                 className={
-                  'cursor-pointer text-primary font-bold transform hover:-translate-y-1 duration-300'
+                  'cursor-pointer text-primary font-bold'
                 }>
                 {t('Log in')}
               </p>

@@ -84,12 +84,12 @@ export default function LoginForm() {
       <div className={'flex justify-center'}>
         <div className={'flex space-x-5 underline cursor-pointer text-primary duration-300'}>
           <Link to={Path.Register}>
-            <p className='transform hover:-translate-y-1'>
+            <p className=''>
               {t('Sign up')}
             </p>
           </Link>
           <Link to={Path.Reset}>
-            <p className='transform hover:-translate-y-1'>
+            <p className=''>
               {t('Forgot your password?')}
             </p>
           </Link>
