@@ -3100,10 +3100,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jaenjs/jaen@^3.0.0-beta.95":
-  version "3.0.0-beta.95"
-  resolved "https://registry.yarnpkg.com/@jaenjs/jaen/-/jaen-3.0.0-beta.95.tgz#7cf71db9c4f3226ba4a3d54df49eadfbecd33377"
-  integrity sha512-VC3xH4HAbsAwhxx/nN1ddSHR1Q1HUeCfop1hGQBe52DCWlEe0f57k2I4W3Qa/3RnulzTTssmthgnpkCZruKyaw==
+"@jaenjs/jaen@^3.0.0-beta.96":
+  version "3.0.0-beta.96"
+  resolved "https://registry.yarnpkg.com/@jaenjs/jaen/-/jaen-3.0.0-beta.96.tgz#60156caf738a767aff8856a89c93928a1a22c9f9"
+  integrity sha512-xM7BvC1XJu8nlAfpNsLD7Iw+0QBKQUN6LLGfOlAsv2xacsLo9vQ8LiqQh2VejD+fcPMnX/9oY1kBxEc1Esb4lA==
   dependencies:
     "@atlaskit/tree" "^8.4.0"
     "@chakra-ui/icons" "^2.0.11"
