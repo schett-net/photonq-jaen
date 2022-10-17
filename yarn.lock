@@ -4160,12 +4160,13 @@
     "@snek-at/functions" "*"
 
 "@snek-functions/email@*":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@snek-functions/email/-/email-0.0.5.tgz#cfe9a6a74ae53ec830a1c74c3c4518d3a2c36634"
-  integrity sha512-imbAYirN4L2fOfrWTgdT8BE535KjCTTu48XGtlsdOQuSR1b9mt+2eV+wCPl1cgGS2N2oYuOFe/VsRZTooXxivA==
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@snek-functions/email/-/email-0.0.9.tgz#e500e288762ae2e987bfa0816b99d73c4167e79e"
+  integrity sha512-wDVLEbxFlLXnTVGYL0XbCCmD8lTQ0pDN0LR7MuWa32liwOs2qBfWXVPzCvI6t3hczeTP3T9mKUe61N7iI3lX+A==
   dependencies:
     "@snek-at/functions" "*"
     nodemailer "^6.7.8"
+    nodemailer-plugin-inline-base64 "^2.1.1"
 
 "@snek-functions/iam@*":
   version "0.0.5"
@@ -10864,6 +10865,11 @@ node-sass@^7.0.1:
     sass-graph "^4.0.1"
     stdout-stream "^1.4.0"
     "true-case-path" "^2.2.1"
+
+nodemailer-plugin-inline-base64@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/nodemailer-plugin-inline-base64/-/nodemailer-plugin-inline-base64-2.1.1.tgz#249cbc87ccf5ed26efb9a4023e4b6dc881e8d9b2"
+  integrity sha512-/cTnVq9vxZBDh5FjCOkPG5ioTs4o7flRuaqfDGLUfa5yeSMR21OW8hgWJIGuCHgcXmN5QHbR8IeujJeeOzi7uQ==
 
 nodemailer@^6.7.8:
   version "6.7.8"
