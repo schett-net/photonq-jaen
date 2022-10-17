@@ -47,7 +47,7 @@ export default function Navbar({pathname}: {pathname: string}) {
               'w-40 cursor-pointer z-40 flex items-center space-x-8 divide-x'
             }>
             <img
-              src="https://new.photonq.at/assets/CDG_Logo.svg"
+              src="https://photonq.at/assets/CDG_Logo.svg"
               alt="Logo Christian Doppler Forschungsgesellschaft"
               style={{maxHeight: 60}}
             />
