@@ -17,28 +17,35 @@ const isBrowser = typeof window !== 'undefined'
 
 const privateRoutes = getPrivateRoutes()
 
+const getUser = (): User | undefined => {
+  if (isBrowser) {
+    const userCoco = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('U='))
+    if (userCoco) {
+      const urlEncoded = userCoco.split('=')[1]
+      const decoded = decodeURIComponent(urlEncoded)
+
+      console.log('decoded', decoded)
+
+      const user = JSON.parse(decoded)
+
+      return user
+    }
+  }
+}
+
 export default function AuthProvider({path, children}: AuthProviderProps) {
-  const [user, setUser] = useState<User | undefined>()
-  const [loading, setLoading] = useState(false)
+  const [user, setUser] = useState<User | undefined>(getUser())
 
   React.useEffect(() => {
     let lastCookie = ''
 
     const interval = setInterval(() => {
       if (lastCookie !== document.cookie) {
-        const userCoco = document.cookie
-          .split('; ')
-          .find(row => row.startsWith('U='))
-        if (userCoco) {
-          const urlEncoded = userCoco.split('=')[1]
-          const decoded = decodeURIComponent(urlEncoded)
+        const user = getUser()
 
-          console.log('decoded', decoded)
-
-          const user = JSON.parse(decoded)
-          setUser(user)
-          setLoading(false)
-        }
+        setUser(user)
 
         lastCookie = document.cookie
       }
@@ -54,7 +61,7 @@ export default function AuthProvider({path, children}: AuthProviderProps) {
     )
   })()
 
-  if (loading && isOnPrivateRoute) {
+  if (isOnPrivateRoute) {
     return (
       <div
         className={
