@@ -24,7 +24,7 @@ export default function AuthContent(props: {
         <Typography variant={'h5'} fontWeight={'bold'}>
           {props.header}
         </Typography>
-        <p>{props.content}</p>
+        <div>{props.content}</div>
       </div>
     </div>
   )

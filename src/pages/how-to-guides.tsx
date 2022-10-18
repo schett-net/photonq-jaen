@@ -35,7 +35,7 @@ export function HowToGuidesPage(props: PageProps) {
                   />
                 }
               />
-              <p className={'md:w-8/12 md:text-center'}>
+              <div className={'md:w-8/12 md:text-center'}>
                 <Field.Text
                   name="how-to-guide-text"
                   defaultValue={`
@@ -43,7 +43,7 @@ Each of these guides and documentation contains advice and
 research to give you guidelines for your successful quantum
 computing experiment.`}
                 />
-              </p>
+              </div>
             </div>
           </Section>
           <GuideFilter

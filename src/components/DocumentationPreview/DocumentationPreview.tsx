@@ -36,7 +36,7 @@ export default function DocumentationPreview() {
           defaultValue="Documentation & How-To-Guides"
         />
       </h3>
-      <p className={'md:w-8/12 md:text-center'}>
+      <div className={'md:w-8/12 md:text-center'}>
         <Field.Text
           name="docsText"
           defaultValue={`
@@ -45,7 +45,7 @@ as well as documentation to start your learning journey with PhotonQ -
 from quantum computing basics to the specific aspects of our photonic
 hardware.`}
         />
-      </p>
+      </div>
       <GuidePreviewGrid>
         {filteredGuides
           .slice(0, 3)

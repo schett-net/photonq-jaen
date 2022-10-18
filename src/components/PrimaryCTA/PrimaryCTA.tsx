@@ -17,14 +17,14 @@ export default function PrimaryCTA() {
         <h3 className={'text-2xl font-bold'}>
           <Field.Text name="headline" defaultValue="Start Quantum Computing" />
         </h3>
-        <p className="text-xl">
+        <div className="text-xl">
           <Field.Text
             name="text"
             defaultValue={
               'Create your free account and start experimenting with our quantum computer!'
             }
           />
-        </p>
+        </div>
       </div>
       <Button
         size={'large'}

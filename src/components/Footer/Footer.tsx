@@ -1,9 +1,10 @@
-import { navigate } from '@jaenjs/jaen'
-import { Link } from '@mui/material'
-import { useLocation } from '@reach/router'
+import {navigate} from '@jaenjs/jaen'
+import {Link} from '@mui/material'
+import {useLocation} from '@reach/router'
 import clsx from 'clsx'
+
 import React from 'react'
-import { getLangRootNavigationPath } from '../../common/getLangRootNavigationPath'
+import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
 import MaxWidthContainer from '../Layout/MaxWidthContainer'
 
 interface FooterProps {
@@ -91,15 +92,19 @@ export default function Footer({alwaysAtBottom}: FooterProps) {
             <p className={'font-bold'}>Partners</p>
             <div className="flex space-x-14">
               <div className="flex flex-col space-y-4 mt-3">
-                <Link href="https://www.cdg.ac.at/" style={{color: '#FFF'}}>
-                  <a target="_blank" className="cursor-pointer">
-                    Christian Doppler Forschungsgesellschaft (CDG)
-                  </a>
+                <Link
+                  href="https://www.cdg.ac.at/"
+                  target="_blank"
+                  className="cursor-pointer"
+                  style={{color: '#FFF'}}>
+                  Christian Doppler Forschungsgesellschaft (CDG)
                 </Link>
-                <Link href="https://www.univie.ac.at/" style={{color: '#FFF'}}>
-                  <a target="_blank" className="cursor-pointer">
-                    University of Vienna
-                  </a>
+                <Link
+                  href="https://www.univie.ac.at/"
+                  target="_blank"
+                  className="cursor-pointer"
+                  style={{color: '#FFF'}}>
+                  University of Vienna
                 </Link>
                 {/* <Link href="https://www.tencent.com/" style={{color: '#FFF'}}>
                   <a target="_blank" className="cursor-pointer">

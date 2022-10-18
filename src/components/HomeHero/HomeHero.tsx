@@ -39,12 +39,12 @@ export default function HomeHero() {
               />
             }
           />
-          <p className="text-xl text-center">
+          <div className="text-xl text-center">
             <Field.Text
               name="heroText"
               defaultValue="Learn quantum computing and run your circuits on our photonic quantum hardware"
             />
-          </p>
+          </div>
           <div
             className={
               'mt-10 space-y-2 flex flex-col justify-center md:flex-row md:space-y-0'

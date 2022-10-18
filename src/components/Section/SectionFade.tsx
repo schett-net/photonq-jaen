@@ -20,7 +20,7 @@ export default function SectionContent({header, content}: SectionContentProps) {
               'xl:w-8/12 space-y-5 flex flex-col justify-center p-10 ml-10'
             }>
             <h3 className={'text-3xl font-bold text-white'}>{header}</h3>
-            <p className={'pr-10 text-white text-xl'}>{content}</p>
+            <div className={'pr-10 text-white text-xl'}>{content}</div>
           </div>
 
           <div className={'h-[32rem] w-full xl:w-4/6'}>

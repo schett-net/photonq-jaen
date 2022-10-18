@@ -21,7 +21,7 @@ export default function SectionContent({
             ['md:w-8/12']: maxWidthImage
           })}>
           <h3 className={'text-3xl font-bold'}>{header}</h3>
-          <p>{content}</p>
+          <div>{content}</div>
         </div>
         <div
           className={clsx('w-9/12 md:w-4/12 justify-center items-center', {
