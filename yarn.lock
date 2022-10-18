@@ -4149,10 +4149,10 @@
   dependencies:
     "@snek-at/functions" "*"
 
-"@snek-functions/iam@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@snek-functions/iam/-/iam-0.0.9.tgz#5ededb053d1fd7a47f2c76bd2f951d7200a6b7d8"
-  integrity sha512-aPZj4vDNH6dfDkUN2mVERDT8UPL9JrG93G9Dxy/WAzkXl/3id0s5mUahS+PWB2WzTOF1b2MQ6Mh554NAAzO3Ew==
+"@snek-functions/iam@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@snek-functions/iam/-/iam-0.0.10.tgz#6ad6d81f3995fab03ffb40aa82044c593d956c36"
+  integrity sha512-B9JLRuMRPk6mf5mqmI6fL0cqul4mhZdZohG8a26UgTh7pLF3VvijF7mJc93zKloVMfsneh08rp8MX0T8BaR5Lw==
   dependencies:
     "@snek-at/functions" "*"
 

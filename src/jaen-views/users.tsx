@@ -553,7 +553,7 @@ const useUsers = () => {
 
     const deleteUser = async (userId: string) => {
         const { errors } = await usersDelete.execute({
-            user_id: userId,
+            userId: userId,
         });
 
         const ok = checkErrors(errors);
