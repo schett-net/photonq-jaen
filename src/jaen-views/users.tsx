@@ -260,7 +260,7 @@ const UserDetails = () => {
             }
         });
 
-        const ok = await updateUser({ id: user.userId, ...diff });
+        const ok = await updateUser({ userId: user.userId, ...diff });
 
         if (ok) {
             reset(values);
