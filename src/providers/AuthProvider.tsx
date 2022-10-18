@@ -61,7 +61,7 @@ export default function AuthProvider({path, children}: AuthProviderProps) {
     )
   })()
 
-  if (isOnPrivateRoute) {
+  if (isOnPrivateRoute && !user) {
     return (
       <div
         className={
@@ -70,8 +70,6 @@ export default function AuthProvider({path, children}: AuthProviderProps) {
         <CircularProgress size={50} />
       </div>
     )
-  } else if (isOnPrivateRoute && !user) {
-    return <>Access denied</>
   }
 
   return (
