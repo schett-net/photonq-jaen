@@ -67,7 +67,7 @@ const UsersList = () => {
                     <Thead position="sticky" top={0} bgColor={"white"} zIndex={1}>
                         <Tr my=".8rem" pl="0px">
                             <Th pl="0px" color="gray.400">
-                                Id
+                                Index
                             </Th>
                             <Th color="gray.400">E-Mail</Th>
                             <Th color="gray.400">Firstname</Th>
@@ -83,7 +83,7 @@ const UsersList = () => {
                             <Tr>
                                 <Td p={1}>
                                     <Text fontSize="sm" color={textColor} textAlign={"left"}>
-                                        {index + 1}
+                                        {users.length - index}
                                     </Text>
                                 </Td>
                                 <Td>
@@ -291,6 +291,13 @@ const UserDetails = () => {
     return (
         <Box>
             <form onSubmit={handleSubmit(onSubmit)}>
+                <FormControl>
+                    <FormLabel>ID</FormLabel>
+                    <Input
+                        placeholder={user.userId}
+                        disabled
+                    />
+                </FormControl>
                 <FormControl isInvalid={!!errors.email}>
                     <FormLabel>E-Mail</FormLabel>
                     <Input
@@ -767,7 +774,7 @@ export default connectView(UsersView, {
     path: "/users",
     displayName: "User",
     description:
-        "Hier sind alle Benutzer aufgelistet, die Zugriff auf diese Seite haben.",
+        "Hier sind alle Benutzer von PhotonQ aufgelistet.",
     Icon: FaUser,
     controls: [<AddUserControl />],
 });
