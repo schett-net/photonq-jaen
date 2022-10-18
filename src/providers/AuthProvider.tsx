@@ -49,7 +49,9 @@ export default function AuthProvider({path, children}: AuthProviderProps) {
   const isOnPrivateRoute = (() => {
     if (!isBrowser) return false
 
-    return privateRoutes.some(route => route.href === window.location.pathname)
+    return privateRoutes.some(
+      route => route.href === window.location.pathname.replace(/\/$/, '')
+    )
   })()
 
   if (loading && isOnPrivateRoute) {
