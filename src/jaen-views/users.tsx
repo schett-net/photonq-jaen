@@ -291,13 +291,13 @@ const UserDetails = () => {
     return (
         <Box>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <FormControl>
+                {/* <FormControl>
                     <FormLabel>ID</FormLabel>
                     <Input
                         placeholder={user.userId}
                         disabled
                     />
-                </FormControl>
+                </FormControl> */}
                 <FormControl isInvalid={!!errors.email}>
                     <FormLabel>E-Mail</FormLabel>
                     <Input
