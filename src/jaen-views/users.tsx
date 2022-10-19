@@ -79,7 +79,7 @@ const UsersList = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {users.reverse().map((user, index) => (
+                        {users.map((user, index) => (
                             <Tr>
                                 <Td p={1}>
                                     <Text fontSize="sm" color={textColor} textAlign={"left"}>
@@ -117,7 +117,7 @@ const UsersList = () => {
                                     </Button>
                                 </Td>
                             </Tr>
-                        ))}
+                        )).reverse()}
                     </Tbody>
                 </Table>
 
