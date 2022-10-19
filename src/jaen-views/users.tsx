@@ -79,11 +79,11 @@ const UsersList = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {users.map((user, index) => (
+                        {users.reverse().map((user, index) => (
                             <Tr>
                                 <Td p={1}>
                                     <Text fontSize="sm" color={textColor} textAlign={"left"}>
-                                        {users.length - index}
+                                        {index + 1}
                                     </Text>
                                 </Td>
                                 <Td>
