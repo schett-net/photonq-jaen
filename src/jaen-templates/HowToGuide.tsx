@@ -33,8 +33,8 @@ function HowToTemplate(props: PageProps) {
         <NavbarPadding />
         <Section fullWidth withVerticalPadding>
           <GuideHeader
-            title={<Field.Text name="title" defaultValue={'title'} />}
-            subtitle={<Field.Text name="teaser" defaultValue={'title'} />}
+            title={<Field.Text name="title" defaultValue={'Titel'} />}
+            subtitle={<Field.Text name="teaser" defaultValue={'Teaser'} />}
             category={
               <Field.Choice
                 name="category"
@@ -59,7 +59,7 @@ function HowToTemplate(props: PageProps) {
               />
             }
             content_type={
-              <Field.Text name="contentType" defaultValue={'title'} />
+              <Field.Text name="contentType" defaultValue={'Type'} />
             }
             mainImage={
               <Field.Image

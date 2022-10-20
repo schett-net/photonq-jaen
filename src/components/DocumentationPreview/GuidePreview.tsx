@@ -1,7 +1,7 @@
-import {Field, navigate, useField} from '@jaenjs/jaen'
-import {useLocation} from '@reach/router'
-import React from 'react'
-import {getLangRootNavigationPath} from '../../common/getLangRootNavigationPath'
+import { Field, navigate, useField } from '@jaenjs/jaen';
+import { useLocation } from '@reach/router';
+import React from 'react';
+import { getLangRootNavigationPath } from '../../common/getLangRootNavigationPath';
 
 function GuidePreview(props: {index: string; slug: string}) {
   const mainImage = useField('mainImage', 'IMA:ImageField')
@@ -48,7 +48,7 @@ function GuidePreview(props: {index: string; slug: string}) {
       <div className={'absolute top-4 right-0 bg-primary-light z-20 px-1'}>
         <Field.Text
           name="contentType"
-          defaultValue={'foo'}
+          defaultValue={'Type'}
           className="text-primary"
         />
       </div>
@@ -60,14 +60,14 @@ function GuidePreview(props: {index: string; slug: string}) {
           <Field.Text
             name="title"
             rtf
-            defaultValue={'foo'}
+            defaultValue={'Titel'}
             className="text-lg font-bold"
           />
         </h4>
 
         <Field.Text
           name="teaser"
-          defaultValue={'foo'}
+          defaultValue={'Teaser'}
           className="leading-normal"
         />
       </div>
